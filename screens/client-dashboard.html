@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home | Pathly</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<!-- Preview only: the real portal must self-host Host Grotesk (third-party font CDNs can be blocked in Iran). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<link rel="stylesheet" href="screens.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="client-dashboard.html" aria-label="Pathly, home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H13a3.5 3.5 0 0 0 0-7h-2a3.5 3.5 0 0 1 0-7h4.8"/></svg></span>Pathly</a>
+    <div class="topbar__tools">
+      <button class="icon-btn" type="button" aria-label="Notifications, 2 new"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-bell"/></svg></button>
+      <button class="user" type="button" aria-label="Account menu for Sara Ahmadi"><span class="avatar" aria-hidden="true">SA</span><span class="user__name" aria-hidden="true">Sara</span><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chevron-down"/></svg></button>
+    </div>
+  </header>
+
+  <aside class="sidenav" aria-label="Sidebar">
+    <nav aria-label="Main">
+      <ul class="side-nav">
+        <li><a href="client-dashboard.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-home"/></svg>Home</a></li>
+        <li><a href="client-upload.html"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg>Documents</a></li>
+        <li><a href="client-timeline.html"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-list"/></svg>Timeline</a></li>
+        <li><a href="../design-system.html#thread"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg>Messages<span class="count">1</span></a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="side-label" id="help-l">Help</p>
+      <ul class="side-nav" aria-labelledby="help-l">
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-settings"/></svg>Settings</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-support"/></svg>Support</a></li>
+      </ul>
+    </div>
+    <div class="help-card">
+      <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="../art.svg#a-help"/></svg>
+      <strong>Questions about your case?</strong>
+      <p>Your case officer replies on working days.</p>
+      <a class="btn btn--secondary" href="../design-system.html#thread">Send a message</a>
+    </div>
+  </aside>
+
+  <main id="main" class="main-col">
+    <div class="page-head">
+      <div class="case-head"><span class="tag-chip">Canada · Study permit</span><span class="tag-chip">Case CA-STU-0142</span></div>
+      <h1 class="page-title">Hello, Sara</h1>
+      <p class="page-sub">You have 4 things to do. Everything else is on track. Example data for design review.</p>
+    </div>
+
+    <div class="banner" data-tone="info" role="status">
+      <svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-info"/></svg>
+      <div>
+        <p class="banner__title">Your case officer sent you a message</p>
+        <p class="banner__body">They need one more detail for your study plan. Sent today, 09:41.</p>
+        <div class="banner__actions"><a class="btn btn--secondary" href="../design-system.html#thread">Read message</a></div>
+      </div>
+      <span></span>
+    </div>
+
+    <section class="kpi-card" aria-label="Case summary">
+      <div class="kpi"><span class="chip-icon" data-tone="mint"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-complete"/></svg></span><div class="kpi__body"><span class="kpi__value">2 of 6</span><span class="kpi__label">Documents complete</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="amber"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-needed"/></svg></span><div class="kpi__body"><span class="kpi__value">4</span><span class="kpi__label">Open requests</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="blue"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-calendar"/></svg></span><div class="kpi__body"><span class="kpi__value">34</span><span class="kpi__label">Days since your contract</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="rose"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg></span><div class="kpi__body"><span class="kpi__value">Today</span><span class="kpi__label">Next deadline</span></div></div>
+    </section>
+
+    <div class="cols cols--aside">
+      <!-- Wide screens: path chart. Narrow screens: progress summary. -->
+      <section class="chart-card only-wide" aria-labelledby="path-h">
+        <div class="chart-card__head"><h2 class="section-title" id="path-h">Your path</h2><span class="tiny">Step 4 of 9</span></div>
+        <div class="chart-scroll">
+          <svg class="chart" viewBox="0 0 650 230" role="img" aria-labelledby="path-t path-d">
+            <title id="path-t">Your path: step 4 of 9</title>
+            <desc id="path-d">You have finished contract signed, initial documents and document review. You are now on choose your universities. Next steps: applications, offers, visa preparation, visa application and decision.</desc>
+            <line class="grid-line" x1="30" y1="50" x2="630" y2="50"/><line class="grid-line" x1="30" y1="90" x2="630" y2="90"/><line class="grid-line" x1="30" y1="130" x2="630" y2="130"/><line class="grid-line" x1="30" y1="170" x2="630" y2="170"/>
+            <path class="line line--next" d="M256.2 84.0 C279.2 78.3 302.1 101.3 325.0 98.0 C347.9 94.7 370.8 67.0 393.8 64.0 C416.7 61.0 439.6 83.7 462.5 80.0 C485.4 76.3 508.3 46.0 531.2 42.0 C554.2 38.0 588.5 53.7 600.0 56.0"/>
+            <path class="line line--brand" d="M50.0 150.0 C61.5 144.7 95.8 121.0 118.8 118.0 C141.7 115.0 164.6 137.7 187.5 132.0 C210.4 126.3 233.3 89.7 256.2 84.0"/>
+            <circle class="dot" cx="50" cy="150" r="5"/><circle class="dot" cx="118.8" cy="118" r="5"/><circle class="dot" cx="187.5" cy="132" r="5"/>
+            <circle class="dot--todo dot" cx="325" cy="98" r="5"/><circle class="dot--todo dot" cx="393.8" cy="64" r="5"/><circle class="dot--todo dot" cx="462.5" cy="80" r="5"/><circle class="dot--todo dot" cx="531.2" cy="42" r="5"/><circle class="dot--todo dot" cx="600" cy="56" r="5"/>
+            <line class="guide" x1="256.2" y1="96" x2="256.2" y2="190"/>
+            <circle class="now-ring" cx="256.2" cy="84" r="11"/><circle class="now-core" cx="256.2" cy="84" r="4"/>
+            <rect class="tip" x="176" y="14" width="160" height="44" rx="12"/>
+            <text class="tip-text" x="192" y="32">Step 4 of 9</text><text class="tip-sub" x="192" y="48">Choose your universities</text>
+            <g class="axis-text" text-anchor="middle">
+              <text x="50" y="214">Contract</text><text x="118.8" y="214">Documents</text><text x="187.5" y="214">Review</text><text class="axis-text--strong" x="256.2" y="214">Universities</text><text x="325" y="214">Applications</text><text x="393.8" y="214">Offers</text><text x="462.5" y="214">Visa prep</text><text x="531.2" y="214">Visa</text><text x="600" y="214">Decision</text>
+            </g>
+          </svg>
+        </div>
+        <p class="small muted">Next: we start your applications as soon as you choose. Please reply by Wed 14 Oct. <a href="client-timeline.html">See all steps</a></p>
+      </section>
+
+      <section class="stage-summary only-narrow" aria-label="Case progress">
+        <p class="stage-summary__step">Step 4 of 9</p>
+        <div class="segments" role="progressbar" aria-label="Case progress" aria-valuemin="1" aria-valuemax="9" aria-valuenow="4" aria-valuetext="Step 4 of 9: Choose your universities">
+          <span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-current"></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <h2 class="stage-summary__title">Choose your universities</h2>
+        <p class="stage-summary__next">Next: we start your applications as soon as you choose. Please reply by Wed 14 Oct.</p>
+        <div><a class="btn btn--secondary" href="client-timeline.html">See all steps</a></div>
+      </section>
+
+      <section class="side-card" aria-labelledby="pay-h">
+        <h2 class="side-card__title" id="pay-h">Contract payments</h2>
+        <div class="side-card__head">
+          <div><span class="side-card__big">40%</span><span class="side-card__sub">of your contract is paid</span></div>
+          <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="../art.svg#a-trip"/></svg>
+        </div>
+        <div class="meters">
+          <div><span class="meter__label">Paid 40%</span><div class="meter__bar" aria-hidden="true"><span style="inline-size:40%"></span></div></div>
+          <div><span class="meter__label">Remaining 60%</span><div class="meter__bar" aria-hidden="true"><span style="inline-size:60%;--meter:var(--color-status-needed-border)"></span></div></div>
+        </div>
+        <p class="small muted">Next: application fee, due Thu 22 Oct.</p>
+        <a class="btn btn--dark" href="#">See payment details<svg class="icon" aria-hidden="true"><use href="../icons.svg#i-arrow-right"/></svg></a>
+      </section>
+    </div>
+
+    <div class="cols cols--aside">
+      <div class="stack stack--lg">
+        <section class="request-list" aria-labelledby="todo-h">
+          <div class="request-list__head"><h2 class="section-title" id="todo-h">What we need from you</h2><span class="tiny">4 items, most urgent first</span></div>
+
+          <article class="request">
+            <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-pencil"/></svg></span>
+              <div><h3 class="request__title">Study plan questionnaire</h3><p class="request__desc">Two answers are missing. See the note from your case officer.</p></div></div>
+            <div class="request__meta"><span class="pill" data-state="needs-fixing"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-fixing"/></svg>Needs fixing</span><span class="deadline" data-timing="overdue"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Overdue by 2 days</span></div>
+            <div class="request__actions"><a class="btn btn--primary" href="#">Review answers</a></div>
+          </article>
+
+          <article class="request">
+            <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-list"/></svg></span>
+              <div><h3 class="request__title">Choose your universities</h3><p class="request__desc">We shortlisted 4 options that match your profile.</p></div></div>
+            <div class="request__meta"><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-needed"/></svg>Needed</span><span class="deadline" data-timing="today"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Due today</span></div>
+            <div class="request__actions"><a class="btn btn--primary" href="#">View options</a></div>
+          </article>
+
+          <article class="request">
+            <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-doc"/></svg></span>
+              <div><h3 class="request__title">Bank statement</h3><p class="request__desc">Last 3 months, PDF, issued by your bank.</p></div></div>
+            <div class="request__meta"><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-needed"/></svg>Needed</span><span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Due Wed 14 Oct, in 4 days</span></div>
+            <div class="request__actions"><a class="btn btn--primary" href="client-upload.html">Upload document</a></div>
+          </article>
+
+          <article class="request">
+            <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-card"/></svg></span>
+              <div><h3 class="request__title">Application fee: example university</h3><p class="request__desc">Pay by bank transfer, then upload your proof of payment.</p></div></div>
+            <div class="request__meta"><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-needed"/></svg>Needed</span><span class="deadline" data-timing="upcoming"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-calendar"/></svg>Due Thu 22 Oct, in 12 days</span></div>
+            <div class="request__actions"><a class="btn btn--secondary" href="#">See payment details</a></div>
+          </article>
+        </section>
+
+        <section class="request-list" aria-labelledby="wait-h">
+          <div class="request-list__head"><h2 class="section-title" id="wait-h">Waiting on others</h2><span class="tiny">Nothing for you to do</span></div>
+          <article class="request">
+            <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-doc"/></svg></span>
+              <div><h3 class="request__title">Passport scan check</h3><p class="request__desc">With the translation office. We will tell you when it changes.</p></div></div>
+            <div class="request__meta"><span class="pill" data-state="waiting"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-waiting"/></svg>Waiting on third party</span></div>
+          </article>
+          <article class="request">
+            <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-doc"/></svg></span>
+              <div><h3 class="request__title">Transcript review</h3><p class="request__desc">A specialist is checking it.</p></div></div>
+            <div class="request__meta"><span class="pill" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-review"/></svg>In review</span></div>
+          </article>
+        </section>
+      </div>
+
+      <aside class="stack" aria-label="Case details">
+        <section class="card" aria-labelledby="dates-h">
+          <h2 class="card__title" id="dates-h">Next dates</h2>
+          <ul class="dates">
+            <li><span class="date-badge date-badge--overdue"><strong>8</strong>Oct</span><div><p class="small"><strong>Study plan questionnaire</strong></p><span class="deadline" data-timing="overdue"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Overdue by 2 days</span></div></li>
+            <li><span class="date-badge"><strong>10</strong>Oct</span><div><p class="small"><strong>Choose your universities</strong></p><span class="deadline" data-timing="today"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Due today</span></div></li>
+            <li><span class="date-badge"><strong>14</strong>Oct</span><div><p class="small"><strong>Bank statement</strong></p><span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Wed, in 4 days</span></div></li>
+            <li><span class="date-badge"><strong>22</strong>Oct</span><div><p class="small"><strong>Application fee</strong></p><span class="deadline" data-timing="upcoming"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-calendar"/></svg>Thu, in 12 days</span></div></li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="team-h">
+          <h2 class="card__title" id="team-h">Your case team</h2>
+          <div class="team"><span class="avatar" aria-hidden="true">CO</span><div><p class="team__name">Your case officer</p><p class="tiny">Replies on working days</p></div>
+            <a class="btn btn--secondary" href="../design-system.html#thread">Message</a></div>
+        </section>
+
+        <section class="card" aria-labelledby="act-h">
+          <div class="section-head"><h2 class="card__title" id="act-h">Recent activity</h2><a class="link-btn" href="client-timeline.html">See all</a></div>
+          <ol class="timeline" aria-label="Recent activity">
+            <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-list"/></svg></span><div><p class="event__title">University options sent</p><span class="event__time">Today, 09:10</span></div></li>
+            <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-complete"/></svg></span><div><p class="event__title">Documents approved</p><span class="event__time">Thu 8 Oct, 16:25</span></div></li>
+            <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-fixing"/></svg></span><div><p class="event__title">Bank statement needs fixing</p><span class="event__time">Tue 6 Oct, 11:02</span></div></li>
+          </ol>
+        </section>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<nav class="bottomnav" aria-label="Main (mobile)">
+  <a href="client-dashboard.html" aria-current="page"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-home"/></svg></span>Home</a>
+  <a href="client-upload.html"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg></span>Documents</a>
+  <a href="client-timeline.html"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-list"/></svg></span>Timeline</a>
+  <a href="../design-system.html#thread"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg></span>Messages</a>
+</nav>
+</body>
+</html>

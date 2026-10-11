@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline | Pathly</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<!-- Preview only: the real portal must self-host Host Grotesk (third-party font CDNs can be blocked in Iran). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<link rel="stylesheet" href="screens.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="client-dashboard.html" aria-label="Pathly, home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H13a3.5 3.5 0 0 0 0-7h-2a3.5 3.5 0 0 1 0-7h4.8"/></svg></span>Pathly</a>
+    <div class="topbar__tools">
+      <button class="icon-btn" type="button" aria-label="Notifications, 2 new"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-bell"/></svg></button>
+      <button class="user" type="button" aria-label="Account menu for Sara Ahmadi"><span class="avatar" aria-hidden="true">SA</span><span class="user__name" aria-hidden="true">Sara</span><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chevron-down"/></svg></button>
+    </div>
+  </header>
+
+  <aside class="sidenav" aria-label="Sidebar">
+    <nav aria-label="Main">
+      <ul class="side-nav">
+        <li><a href="client-dashboard.html"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-home"/></svg>Home</a></li>
+        <li><a href="client-upload.html"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg>Documents</a></li>
+        <li><a href="client-timeline.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-list"/></svg>Timeline</a></li>
+        <li><a href="../design-system.html#thread"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg>Messages<span class="count">1</span></a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="side-label" id="help-l">Help</p>
+      <ul class="side-nav" aria-labelledby="help-l">
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-settings"/></svg>Settings</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-support"/></svg>Support</a></li>
+      </ul>
+    </div>
+    <div class="help-card">
+      <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="../art.svg#a-help"/></svg>
+      <strong>Questions about your case?</strong>
+      <p>Your case officer replies on working days.</p>
+      <a class="btn btn--secondary" href="../design-system.html#thread">Send a message</a>
+    </div>
+  </aside>
+
+  <main id="main" class="main-col">
+    <div class="page-head">
+      <div class="case-head"><span class="tag-chip">Canada · Study permit</span><span class="tag-chip">Case CA-STU-0142</span></div>
+      <h1 class="page-title">Your case timeline</h1>
+      <p class="page-sub">Every step and every update, in one place. Your case takes several months, so you can always come back here to see what is happening. Example data for design review.</p>
+    </div>
+
+    <div class="cols cols--split">
+      <section class="card sticky-card" aria-labelledby="steps-h">
+        <h2 class="card__title" id="steps-h">Steps in your case</h2>
+        <p class="card__body">Step 4 of 9</p>
+        <ol class="steps" aria-label="Case steps">
+          <li class="step is-done"><span class="step__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg></span><div><p class="step__title">Contract signed</p><p class="step__caption">Done on Mon 7 Sep</p></div></li>
+          <li class="step is-done"><span class="step__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg></span><div><p class="step__title">Initial documents</p><p class="step__caption">Done on Fri 2 Oct</p></div></li>
+          <li class="step is-done"><span class="step__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg></span><div><p class="step__title">Document review</p><p class="step__caption">Done on Thu 8 Oct</p></div></li>
+          <li class="step is-current" aria-current="step"><span class="step__marker"></span><div><p class="step__title">Choose your universities <span class="visually-hidden">(current step)</span></p><p class="step__caption">You are here. 1 decision needed by Wed 14 Oct.</p></div></li>
+          <li class="step"><span class="step__marker"></span><div><p class="step__title">Applications</p><p class="step__caption">We submit them for you</p></div></li>
+          <li class="step"><span class="step__marker"></span><div><p class="step__title">Offers</p><p class="step__caption">Universities reply</p></div></li>
+          <li class="step"><span class="step__marker"></span><div><p class="step__title">Visa preparation</p></div></li>
+          <li class="step"><span class="step__marker"></span><div><p class="step__title">Visa application</p></div></li>
+          <li class="step"><span class="step__marker"></span><div><p class="step__title">Decision</p></div></li>
+        </ol>
+      </section>
+
+      <section class="timeline-wrap" aria-labelledby="act-h">
+        <div class="section-head"><h2 class="section-title" id="act-h">Activity</h2></div>
+        <div class="filters" role="group" aria-label="Filter activity">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="documents" aria-pressed="false">Documents</button>
+          <button class="filter" type="button" data-filter="payments" aria-pressed="false">Payments</button>
+          <button class="filter" type="button" data-filter="messages" aria-pressed="false">Messages</button>
+          <button class="filter" type="button" data-filter="decisions" aria-pressed="false">Decisions</button>
+        </div>
+        <p class="tiny" id="filter-status" role="status" aria-live="polite">Showing all 8 updates.</p>
+
+        <div class="card">
+          <h3 class="small muted" style="font-weight:600">October 2026</h3>
+          <ol class="timeline" aria-label="Activity, newest first" id="log">
+            <li class="event" data-type="decisions"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-list"/></svg></span><div><p class="event__title">University options sent to you</p><p class="event__detail">We shortlisted 4 options that match your profile. Please choose by Wed 14 Oct.</p><span class="event__time">Today, 09:10 · Your case officer</span></div></li>
+            <li class="event" data-type="messages"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg></span><div><p class="event__title">New message from your case officer</p><p class="event__detail">They need one more detail for your study plan.</p><span class="event__time">Today, 09:41 · Your case officer</span></div></li>
+            <li class="event" data-type="documents"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-complete"/></svg></span><div><p class="event__title">Passport copy and photo approved</p><span class="event__time">Thu 8 Oct, 16:25 · Document team</span></div></li>
+            <li class="event" data-type="documents"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-fixing"/></svg></span><div><p class="event__title">Bank statement needs fixing</p><p class="event__detail">The statement was older than 3 months. Please send one issued after 10 July by Wed 14 Oct.</p><span class="event__time">Tue 6 Oct, 11:02 · Document team</span></div></li>
+            <li class="event" data-type="messages"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg></span><div><p class="event__title">Reminder: study plan questionnaire</p><p class="event__detail">It was due on Thu 8 Oct. We sent this reminder by email.</p><span class="event__time">Mon 5 Oct, 14:20 · Automatic</span></div></li>
+            <li class="event" data-type="documents"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-received"/></svg></span><div><p class="event__title">You uploaded 6 documents</p><span class="event__time">Fri 2 Oct, 20:44 · You</span></div></li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h3 class="small muted" style="font-weight:600">September 2026</h3>
+          <ol class="timeline" aria-label="Activity, September" id="log2">
+            <li class="event" data-type="payments"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-card"/></svg></span><div><p class="event__title">Payment received: first instalment</p><p class="event__detail">Confirmed by the accounts team. Thank you.</p><span class="event__time">Wed 30 Sep, 10:15 · Accounts</span></div></li>
+            <li class="event" data-type="documents"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg></span><div><p class="event__title">Contract signed. Welcome!</p><p class="event__detail">Your document checklist is ready.</p><span class="event__time">Mon 7 Sep, 14:00 · Your case officer</span></div></li>
+          </ol>
+        </div>
+
+        <div class="empty" id="no-match" hidden>
+          <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="../art.svg#a-empty"/></svg>
+          <h3 class="empty__title">No updates here yet</h3>
+          <p class="empty__body">Nothing matches this filter. Choose "All" to see every update.</p>
+          <button class="btn btn--secondary" type="button" id="reset-filter">Show all updates</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<nav class="bottomnav" aria-label="Main (mobile)">
+  <a href="client-dashboard.html"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-home"/></svg></span>Home</a>
+  <a href="client-upload.html"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg></span>Documents</a>
+  <a href="client-timeline.html" aria-current="page"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-list"/></svg></span>Timeline</a>
+  <a href="../design-system.html#thread"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg></span>Messages</a>
+</nav>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.filter'), events = document.querySelectorAll('.event[data-type]');
+  var status = document.getElementById('filter-status'), none = document.getElementById('no-match');
+  var labels = { all: 'all', documents: 'document', payments: 'payment', messages: 'message', decisions: 'decision' };
+  function apply(kind) {
+    var shown = 0;
+    events.forEach(function (e) { var ok = kind === 'all' || e.getAttribute('data-type') === kind; e.hidden = !ok; if (ok) shown++; });
+    ['log', 'log2'].forEach(function (id) { var ol = document.getElementById(id); ol.closest('.card').hidden = !ol.querySelector('.event:not([hidden])'); });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === kind)); });
+    none.hidden = shown !== 0;
+    status.textContent = kind === 'all' ? 'Showing all ' + shown + ' updates.' : 'Showing ' + shown + ' ' + labels[kind] + ' update' + (shown === 1 ? '' : 's') + '.';
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); }); });
+  document.getElementById('reset-filter').addEventListener('click', function () { apply('all'); });
+})();
+</script>
+</body>
+</html>

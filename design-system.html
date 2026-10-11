@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly Design System</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Preview only: Host Grotesk is loaded from Google Fonts so this reference renders correctly.
+     The real portal must self-host the font (third-party CDNs can be slow or blocked in Iran). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="screens/screens.css">
+<style>
+  /* Documentation chrome only. Components live in components.css. */
+  html { scroll-padding-block-start: 96px; } /* keeps a focused element from hiding under the sticky header (WCAG 2.4.11) */
+  body { margin: 0; }
+  .doc-head { position: sticky; inset-block-start: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--color-bg-surface); border-block-end: 1px solid var(--color-border-default); }
+  .doc-head h1 { margin: 0; font: 600 1.125rem/1.625rem var(--font-family-sans); }
+  .doc-head small { color: var(--color-text-secondary); font: 400 0.75rem/1rem var(--font-family-sans); display: block; }
+  .seg { display: inline-flex; border: 1px solid var(--color-border-input); border-radius: var(--radius-md); overflow: hidden; }
+  .seg button { all: unset; cursor: pointer; padding: var(--space-2) var(--space-3); font: 500 0.875rem/1.25rem var(--font-family-sans); color: var(--color-text-secondary); }
+  .seg button[aria-pressed="true"] { background: var(--color-bg-brand); color: var(--color-text-on-brand); }
+  .seg button:focus-visible { box-shadow: inset 0 0 0 2px var(--color-border-focus); }
+  .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--space-8); max-inline-size: 1280px; margin-inline: auto; padding: var(--space-6) var(--space-4) var(--space-16); }
+  .toc { position: sticky; inset-block-start: 88px; align-self: start; display: grid; gap: var(--space-1); font: 500 0.875rem/1.25rem var(--font-family-sans); }
+  .toc a { color: var(--color-text-secondary); text-decoration: none; padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); }
+  .toc a:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+  @media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .toc { display: none; } }
+  main { min-inline-size: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-16); }
+  .sec { display: grid; gap: var(--space-4); scroll-margin-block-start: 88px; }
+  .sec h2 { margin: 0; font: 600 1.5rem/2rem var(--font-family-sans); letter-spacing: -0.005em; }
+  .sec h3 { margin: 0; font: 600 1rem/1.5rem var(--font-family-sans); color: var(--color-text-secondary); }
+  .sec > p, .notes { margin: 0; max-inline-size: 70ch; font: 400 1rem/1.5rem var(--font-family-sans); color: var(--color-text-secondary); }
+  .notes { padding-inline-start: var(--space-5); }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: var(--space-6); align-items: start; }
+  .fig { margin: 0; display: grid; gap: var(--space-2); min-inline-size: 0; }
+  .fig figcaption { font: 500 0.75rem/1rem var(--font-family-sans); color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; }
+  .phone { inline-size: 100%; max-inline-size: 390px; padding: var(--space-4); display: grid; gap: var(--space-4); background: var(--color-bg-page); color: var(--color-text-primary); border: 1px solid var(--color-border-default); border-radius: var(--radius-xl); }
+  .panel, .grid > * { min-inline-size: 0; }
+  .panel { padding: var(--space-5); background: var(--color-bg-page); color: var(--color-text-primary); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); display: grid; gap: var(--space-4); }
+  .btn-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, max-content)); gap: var(--space-3); align-items: center; }
+  .tag { font: 500 0.75rem/1rem var(--font-family-sans); color: var(--color-text-secondary); }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-needed" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 11V5.5M5.5 8L8 5.5L10.5 8"/></symbol>
+  <symbol id="i-received" viewBox="0 0 16 16"><path d="M4.5 2.5h5L12 5v8.5H4.5z"/><path d="M9.5 2.5V5H12"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 16 16"><path d="M4.5 2.5h5L12 5v8.5H4.5z"/><path d="M9.5 2.5V5H12"/></symbol>
+  <symbol id="i-review" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4"/><path d="M10 10l3 3"/></symbol>
+  <symbol id="i-fixing" viewBox="0 0 16 16"><path d="M8 2.5L14 13H2z"/><path d="M8 6.5v3M8 11.3v.1"/></symbol>
+  <symbol id="i-complete" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M5 8.2l2.2 2.2L11 6"/></symbol>
+  <symbol id="i-expired" viewBox="0 0 16 16"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M6.5 8.7l3 3M9.5 8.7l-3 3"/></symbol>
+  <symbol id="i-waiting" viewBox="0 0 16 16"><path d="M4.5 2.5h7M4.5 13.5h7M5 2.5c0 3 3 3.5 3 5.5s-3 2.5-3 5.5M11 2.5c0 3-3 3.5-3 5.5s3 2.5 3 5.5"/></symbol>
+  <symbol id="i-locked" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></symbol>
+  <symbol id="i-na" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4.8V8l2 1.2"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 16 16"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v2.5M10.5 2v2.5"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 16 16"><path d="M2.5 5.5h2l1-1.5h5l1 1.5h2v7h-11z"/><circle cx="8" cy="9" r="2.2"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 16 16"><path d="M8 10.5V3M5 6l3-3 3 3M3 12.5h10"/></symbol>
+  <symbol id="i-list" viewBox="0 0 16 16"><path d="M6 4.5h7M6 8h7M6 11.5h7M3 4.5h.1M3 8h.1M3 11.5h.1"/></symbol>
+  <symbol id="i-card" viewBox="0 0 16 16"><rect x="2" y="3.5" width="12" height="9" rx="2"/><path d="M2 6.5h12M4.5 10h2"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 16 16"><path d="M3 13l.7-3L10.5 3.2a1.4 1.4 0 0 1 2 0l.3.3a1.4 1.4 0 0 1 0 2L6 12.3z"/><path d="M9.2 4.5l2.3 2.3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-6.5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 16 16"><path d="M6 3.5l4.5 4.5L6 12.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol>
+  <symbol id="i-info" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7.2V11M8 4.9v.1"/></symbol>
+  <symbol id="i-send" viewBox="0 0 16 16"><path d="M2.5 8L13.5 2.5 10 13.5 7.8 9.2z"/><path d="M7.8 9.2L13.5 2.5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 16 16"><path d="M12.5 7.5l-4.6 4.6a2.6 2.6 0 0 1-3.7-3.7l5-5a1.7 1.7 0 0 1 2.4 2.4l-5 5a.8.8 0 0 1-1.2-1.2L9.3 5"/></symbol>
+  <symbol id="i-wifi-off" viewBox="0 0 16 16"><path d="M2 6.2a9 9 0 0 1 12 0M4.3 8.8a5.5 5.5 0 0 1 7.4 0M6.6 11.3a2 2 0 0 1 2.8 0M2.5 2.5l11 11"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4"/><path d="M10 10l3 3"/></symbol>
+</svg>
+
+<header class="doc-head">
+  <div>
+    <h1>Pathly Design System</h1>
+    <small><a href="index.html">Back to demo home</a> · Components v0.2 · Light theme only · built on tokens.css</small>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Components">
+    <a href="#status">Status pill</a>
+    <a href="#deadline">Deadline marker</a>
+    <a href="#button">Button</a>
+    <a href="#field">Form field</a>
+    <a href="#request">Request card</a>
+    <a href="#upload">Document upload</a>
+    <a href="#stage">Stage tracker</a>
+    <a href="#banner">Banner</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#thread">Message thread</a>
+    <a href="#empty">Empty state</a>
+    <a href="#review">Review panel (staff)</a>
+    <a href="#kpi">KPI card</a>
+    <a href="#side">Side and help cards</a>
+    <a href="#chart">Path chart</a>
+    <a href="#table">Table card</a>
+    <a href="#shells">Page shells</a>
+    <hr style="border:0;border-top:1px solid var(--color-border-default);margin:var(--space-2) 0;inline-size:100%">
+    <a href="screens/client-dashboard.html">Screen: Client dashboard</a>
+    <a href="screens/client-upload.html">Screen: Document upload</a>
+    <a href="screens/client-timeline.html">Screen: Case timeline</a>
+    <a href="screens/staff-review-queue.html">Screen: Staff review queue</a>
+  </nav>
+
+<main>
+
+<!-- ============ STATUS PILL ============ -->
+<section class="sec" id="status">
+  <h2>Status pill</h2>
+  <p>Shows the state of a document, request, application or payment. Always icon + label + color, so color is never the only signal.</p>
+  <div class="panel">
+    <h3>Comfortable (client portal)</h3>
+    <div class="row">
+      <span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span>
+      <span class="pill" data-state="received"><svg class="icon" aria-hidden="true"><use href="#i-received"/></svg>Received</span>
+      <span class="pill" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="#i-review"/></svg>In review</span>
+      <span class="pill" data-state="needs-fixing"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg>Needs fixing</span>
+      <span class="pill" data-state="complete"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg>Complete</span>
+      <span class="pill" data-state="expired"><svg class="icon" aria-hidden="true"><use href="#i-expired"/></svg>Expired</span>
+      <span class="pill" data-state="waiting"><svg class="icon" aria-hidden="true"><use href="#i-waiting"/></svg>Waiting on third party</span>
+      <span class="pill" data-state="locked"><svg class="icon" aria-hidden="true"><use href="#i-locked"/></svg>Locked</span>
+      <span class="pill" data-state="not-applicable"><svg class="icon" aria-hidden="true"><use href="#i-na"/></svg>Not applicable</span>
+    </div>
+    <h3>Compact (staff console)</h3>
+    <div class="row">
+      <span class="pill pill--sm" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span>
+      <span class="pill pill--sm" data-state="received"><svg class="icon" aria-hidden="true"><use href="#i-received"/></svg>Received</span>
+      <span class="pill pill--sm" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="#i-review"/></svg>In review</span>
+      <span class="pill pill--sm" data-state="needs-fixing"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg>Needs fixing</span>
+      <span class="pill pill--sm" data-state="complete"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg>Complete</span>
+      <span class="pill pill--sm" data-state="expired"><svg class="icon" aria-hidden="true"><use href="#i-expired"/></svg>Expired</span>
+      <span class="pill pill--sm" data-state="waiting"><svg class="icon" aria-hidden="true"><use href="#i-waiting"/></svg>Waiting on third party</span>
+      <span class="pill pill--sm" data-state="locked"><svg class="icon" aria-hidden="true"><use href="#i-locked"/></svg>Locked</span>
+      <span class="pill pill--sm" data-state="not-applicable"><svg class="icon" aria-hidden="true"><use href="#i-na"/></svg>Not applicable</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEADLINE ============ -->
+<section class="sec" id="deadline">
+  <h2>Deadline marker</h2>
+  <p>Shows when something is due. It is separate from the state: a Needed item can also be overdue. Overdue is the only solid red element in the portal.</p>
+  <div class="panel">
+    <div class="row">
+      <span class="deadline" data-timing="upcoming"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Due Thu 22 Oct, in 12 days</span>
+      <span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Due Wed 14 Oct, in 4 days</span>
+      <span class="deadline" data-timing="today"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Due today</span>
+      <span class="deadline" data-timing="overdue"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Overdue by 2 days</span>
+    </div>
+    <div class="row">
+      <span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span>
+      <span class="deadline" data-timing="overdue"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Overdue by 2 days</span>
+      <span class="tag">The marker sits next to the state; it never replaces it.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUTTON ============ -->
+<section class="sec" id="button">
+  <h2>Button</h2>
+  <p>One primary action per screen. Say exactly what happens: "Upload document", not "Submit". Comfortable is 48px high for the client portal; Compact is 36px for staff.</p>
+  <div class="grid">
+    <div class="panel" data-density="comfortable">
+      <h3>Comfortable</h3>
+      <div class="btn-matrix">
+        <button class="btn btn--primary" type="button">Upload document</button>
+        <button class="btn btn--primary is-hover" type="button">Hover</button>
+        <button class="btn btn--primary is-focus" type="button">Focus</button>
+        <button class="btn btn--primary" type="button" disabled>Disabled</button>
+        <button class="btn btn--secondary" type="button">Choose file</button>
+        <button class="btn btn--secondary is-hover" type="button">Hover</button>
+        <button class="btn btn--secondary is-focus" type="button">Focus</button>
+        <button class="btn btn--secondary" type="button" disabled>Disabled</button>
+        <button class="btn btn--ghost" type="button">Cancel</button>
+        <button class="btn btn--ghost is-hover" type="button">Hover</button>
+        <button class="btn btn--ghost is-focus" type="button">Focus</button>
+        <button class="btn btn--ghost" type="button" disabled>Disabled</button>
+        <button class="btn btn--danger" type="button">Reject</button>
+        <button class="btn btn--danger is-hover" type="button">Hover</button>
+        <button class="btn btn--danger is-focus" type="button">Focus</button>
+        <button class="btn btn--danger" type="button" disabled>Disabled</button>
+      </div>
+    </div>
+    <div class="panel" data-density="compact">
+      <h3>Compact</h3>
+      <div class="btn-matrix">
+        <button class="btn btn--primary" type="button">Approve</button>
+        <button class="btn btn--primary is-hover" type="button">Hover</button>
+        <button class="btn btn--primary is-focus" type="button">Focus</button>
+        <button class="btn btn--primary" type="button" disabled>Disabled</button>
+        <button class="btn btn--secondary" type="button">Assign</button>
+        <button class="btn btn--secondary is-hover" type="button">Hover</button>
+        <button class="btn btn--secondary is-focus" type="button">Focus</button>
+        <button class="btn btn--secondary" type="button" disabled>Disabled</button>
+        <button class="btn btn--ghost" type="button">Cancel</button>
+        <button class="btn btn--ghost is-hover" type="button">Hover</button>
+        <button class="btn btn--ghost is-focus" type="button">Focus</button>
+        <button class="btn btn--ghost" type="button" disabled>Disabled</button>
+        <button class="btn btn--danger" type="button">Reject</button>
+        <button class="btn btn--danger is-hover" type="button">Hover</button>
+        <button class="btn btn--danger is-focus" type="button">Focus</button>
+        <button class="btn btn--danger" type="button" disabled>Disabled</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIELD ============ -->
+<section class="sec" id="field">
+  <h2>Form field</h2>
+  <p>The label is always visible. Errors say what is wrong and how to fix it. Identity fields use "Full name (as on passport)" because spelling must match the passport exactly.</p>
+  <div class="grid">
+    <div class="panel" data-density="comfortable">
+      <h3>Comfortable</h3>
+      <div class="field"><label class="field__label" for="f1">Full name (as on passport)</label><input class="field__control" id="f1" placeholder="As written in your passport"><span class="field__msg">Spelling must match your passport.</span></div>
+      <div class="field is-focus"><label class="field__label" for="f2">Full name (as on passport)</label><input class="field__control" id="f2" placeholder="As written in your passport"><span class="field__msg">Focus state.</span></div>
+      <div class="field is-error"><label class="field__label" for="f3">Full name (as on passport)</label><input class="field__control" id="f3" value="Sara Ahmadi" aria-invalid="true" aria-describedby="f3m"><span class="field__msg" id="f3m"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg>Your passport shows "SARA AHMADY". Enter your name exactly as it appears there.</span></div>
+      <div class="field"><label class="field__label" for="f4">Passport number</label><input class="field__control" id="f4" value="Z1234567" disabled><span class="field__msg">Locked after your case officer verified it.</span></div>
+    </div>
+    <div class="panel" data-density="compact">
+      <h3>Compact</h3>
+      <div class="field"><label class="field__label" for="g1">Case reference</label><input class="field__control" id="g1" placeholder="e.g. CA-STU-0142"><span class="field__msg">Printed on the contract.</span></div>
+      <div class="field"><label class="field__label" for="g2">Reason for rejection</label>
+        <select class="field__control" id="g2"><option>Blurry or unreadable</option><option>Expired document</option><option>Wrong document type</option><option>Name does not match passport</option><option>Not in the requested format</option><option>Other</option></select></div>
+      <div class="field is-error"><label class="field__label" for="g3">New deadline</label><input class="field__control" id="g3" type="date" aria-invalid="true" aria-describedby="g3m"><span class="field__msg" id="g3m"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg>Choose a date after today.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REQUEST CARD ============ -->
+<section class="sec" id="request">
+  <h2>Request card</h2>
+  <p>The core client pattern: "What we need from you". One card per request, each with a state, a deadline and one clear action. Waiting-on-third-party items show no button and no due date.</p>
+  <div class="grid">
+    <div class="phone">
+      <div class="request-list">
+        <div class="request-list__head"><h3 style="margin:0;font:600 1.25rem/1.75rem var(--font-family-sans);color:var(--color-text-primary)">What we need from you</h3><span class="tag">4 items</span></div>
+
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <div><h4 class="request__title">Bank statement</h4><p class="request__desc">Last 3 months, PDF, issued by your bank.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span><span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Due Wed 14 Oct, in 4 days</span></div>
+          <div class="request__actions"><button class="btn btn--primary" type="button">Upload document</button></div>
+        </article>
+
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-pencil"/></svg></span>
+            <div><h4 class="request__title">Study plan questionnaire</h4><p class="request__desc">Two answers are missing. See the note from your case officer.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="needs-fixing"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg>Needs fixing</span><span class="deadline" data-timing="overdue"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Overdue by 2 days</span></div>
+          <div class="request__actions"><button class="btn btn--primary" type="button">Review answers</button></div>
+        </article>
+
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-list"/></svg></span>
+            <div><h4 class="request__title">Choose your universities</h4><p class="request__desc">We shortlisted 4 options that match your profile.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span><span class="deadline" data-timing="today"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Due today</span></div>
+          <div class="request__actions"><button class="btn btn--primary" type="button">View options</button></div>
+        </article>
+
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-card"/></svg></span>
+            <div><h4 class="request__title">Application fee: example university</h4><p class="request__desc">Pay by bank transfer, then upload your proof of payment.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span><span class="deadline" data-timing="upcoming"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Due Thu 22 Oct, in 12 days</span></div>
+          <div class="request__actions"><button class="btn btn--secondary" type="button">See payment details</button></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="request-list">
+        <div class="request-list__head"><h3 style="margin:0;font:600 1.25rem/1.75rem var(--font-family-sans);color:var(--color-text-primary)">Other states</h3></div>
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <div><h4 class="request__title">Passport copy</h4><p class="request__desc">Approved on Mon 5 Oct.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="complete"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg>Complete</span></div>
+        </article>
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <div><h4 class="request__title">Application: example university</h4><p class="request__desc">Submitted on Sat 3 Oct. Nothing for you to do. We will tell you when it changes.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="waiting"><svg class="icon" aria-hidden="true"><use href="#i-waiting"/></svg>Waiting on third party</span></div>
+        </article>
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <div><h4 class="request__title">Language test result</h4><p class="request__desc">This test is no longer valid (older than 2 years). Please send a new result by Mon 26 Oct.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="expired"><svg class="icon" aria-hidden="true"><use href="#i-expired"/></svg>Expired</span><span class="deadline" data-timing="upcoming"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Due Mon 26 Oct, in 16 days</span></div>
+          <div class="request__actions"><button class="btn btn--primary" type="button">Upload new result</button></div>
+        </article>
+        <article class="request">
+          <div class="request__top"><span class="request__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <div><h4 class="request__title">Visa application form</h4><p class="request__desc">Available after your offer letter is received.</p></div></div>
+          <div class="request__meta"><span class="pill" data-state="locked"><svg class="icon" aria-hidden="true"><use href="#i-locked"/></svg>Locked</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UPLOAD ============ -->
+<section class="sec" id="upload">
+  <h2>Document upload slot</h2>
+  <p>Camera-first for phones, with the requirement visible at the point of upload. Uploads resume after a lost connection. A rejected document always shows the reason and a new deadline.</p>
+  <div class="grid">
+
+    <figure class="fig"><figcaption>Empty</figcaption>
+    <div class="phone"><section class="upload" aria-labelledby="u1">
+      <div class="upload__head"><h4 class="upload__name" id="u1">Bank statement</h4><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span></div>
+      <p class="upload__spec">PDF, JPG or PNG, up to 10 MB. Last 3 months, showing your name and account number. <a href="#upload">See a sample</a></p>
+      <div class="upload__zone">
+        <ul class="upload__tips"><li>Place the page flat in good light.</li><li>Make sure all four corners are visible.</li><li>No glare or shadows over the text.</li></ul>
+        <div class="upload__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Take photo</button><button class="btn btn--secondary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>Choose file</button></div>
+      </div>
+      <span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Due Wed 14 Oct, in 4 days</span>
+    </section></div></figure>
+
+    <figure class="fig"><figcaption>Uploading</figcaption>
+    <div class="phone"><section class="upload" aria-labelledby="u2">
+      <div class="upload__head"><h4 class="upload__name" id="u2">Bank statement</h4><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span></div>
+      <div class="upload__zone upload__zone--solid">
+        <div class="upload__row"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg><div class="upload__file"><span class="upload__filename">bank-statement-oct.pdf</span><span class="upload__sub">3.2 MB · Uploading 62%</span></div></div>
+        <div class="progress" role="progressbar" aria-label="Upload progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62"><span style="inline-size:62%"></span></div>
+        <div class="upload__actions"><button class="btn btn--ghost" type="button">Cancel</button></div>
+      </div>
+    </section></div></figure>
+
+    <figure class="fig"><figcaption>Paused (connection lost)</figcaption>
+    <div class="phone"><section class="upload" aria-labelledby="u3">
+      <div class="upload__head"><h4 class="upload__name" id="u3">Bank statement</h4><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span></div>
+      <div class="upload__zone upload__zone--solid">
+        <div class="upload__row"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg><div class="upload__file"><span class="upload__filename">bank-statement-oct.pdf</span><span class="upload__sub">3.2 MB · Paused at 62%</span></div></div>
+        <div class="progress progress--paused" role="progressbar" aria-label="Upload progress, paused" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62"><span style="inline-size:62%"></span></div>
+        <div class="notice" data-tone="waiting" role="status"><svg class="icon" aria-hidden="true"><use href="#i-wifi-off"/></svg><span><strong>Connection lost.</strong> Your upload will continue by itself when you are back online. You can close this page.</span></div>
+        <div class="upload__actions"><button class="btn btn--secondary" type="button">Try again now</button><button class="btn btn--ghost" type="button">Cancel</button></div>
+      </div>
+    </section></div></figure>
+
+    <figure class="fig"><figcaption>Uploaded</figcaption>
+    <div class="phone"><section class="upload" aria-labelledby="u4">
+      <div class="upload__head"><h4 class="upload__name" id="u4">Bank statement</h4><span class="pill" data-state="received"><svg class="icon" aria-hidden="true"><use href="#i-received"/></svg>Received</span></div>
+      <div class="upload__zone upload__zone--solid">
+        <div class="upload__row"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-doc"/></svg><div class="upload__file"><span class="upload__filename">bank-statement-oct.pdf</span><span class="upload__sub">3.2 MB · Sent today, 09:40</span></div><button class="btn btn--ghost" type="button">Replace</button></div>
+      </div>
+      <p class="upload__spec">We have it and will review it soon. We will email you when it is checked.</p>
+    </section></div></figure>
+
+    <figure class="fig"><figcaption>Upload error</figcaption>
+    <div class="phone"><section class="upload" aria-labelledby="u5">
+      <div class="upload__head"><h4 class="upload__name" id="u5">Bank statement</h4><span class="pill" data-state="needed"><svg class="icon" aria-hidden="true"><use href="#i-needed"/></svg>Needed</span></div>
+      <div class="notice" data-tone="error" role="alert"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg><span><strong>This file is too large (14 MB).</strong> The maximum is 10 MB. Take a new photo, or choose a smaller file.</span></div>
+      <div class="upload__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Take photo</button><button class="btn btn--secondary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>Choose file</button></div>
+    </section></div></figure>
+
+    <figure class="fig"><figcaption>Rejected by staff</figcaption>
+    <div class="phone"><section class="upload" aria-labelledby="u6">
+      <div class="upload__head"><h4 class="upload__name" id="u6">Bank statement</h4><span class="pill" data-state="needs-fixing"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg>Needs fixing</span></div>
+      <div class="notice" data-tone="error"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg><span><strong>We could not accept this file.</strong> Reason: the statement is older than 3 months. Please send one issued after 10 July.</span></div>
+      <span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>New deadline: Mon 19 Oct, in 9 days</span>
+      <div class="upload__actions"><button class="btn btn--primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Take photo</button><button class="btn btn--secondary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>Choose file</button></div>
+    </section></div></figure>
+
+  </div>
+</section>
+
+<!-- ============ STAGE TRACKER ============ -->
+<section class="sec" id="stage">
+  <h2>Stage tracker</h2>
+  <p>Shows where the case is across a 6 to 18 month journey. Progress uses the brand color, not status green. The summary is for the dashboard; the full list is for the case page.</p>
+  <div class="grid">
+    <figure class="fig"><figcaption>Summary</figcaption>
+    <div class="phone"><section class="stage-summary" aria-label="Case progress">
+      <p class="stage-summary__step">Step 4 of 9</p>
+      <div class="segments" role="progressbar" aria-label="Case progress" aria-valuemin="1" aria-valuemax="9" aria-valuenow="4" aria-valuetext="Step 4 of 9: Choose your universities">
+        <span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-current"></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h4 class="stage-summary__title">Choose your universities</h4>
+      <p class="stage-summary__next">Next: we start your applications as soon as you choose. Reply by Wed 14 Oct.</p>
+      <button class="btn btn--secondary" type="button">See all steps</button>
+    </section></div></figure>
+
+    <figure class="fig"><figcaption>Full list</figcaption>
+    <div class="phone"><ol class="steps" aria-label="Case steps">
+      <li class="step is-done"><span class="step__marker"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div><p class="step__title">Contract signed</p><p class="step__caption">Done on Mon 7 Sep</p></div></li>
+      <li class="step is-done"><span class="step__marker"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div><p class="step__title">Initial documents</p><p class="step__caption">Done on Fri 2 Oct</p></div></li>
+      <li class="step is-done"><span class="step__marker"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div><p class="step__title">Document review</p><p class="step__caption">Done on Thu 8 Oct</p></div></li>
+      <li class="step is-current" aria-current="step"><span class="step__marker"></span><div><p class="step__title">Choose your universities <span class="visually-hidden">(current step)</span></p><p class="step__caption">You are here. 1 decision needed.</p></div></li>
+      <li class="step"><span class="step__marker"></span><div><p class="step__title">Applications</p><p class="step__caption">We submit them for you</p></div></li>
+      <li class="step"><span class="step__marker"></span><div><p class="step__title">Offers</p></div></li>
+      <li class="step"><span class="step__marker"></span><div><p class="step__title">Visa preparation</p></div></li>
+      <li class="step"><span class="step__marker"></span><div><p class="step__title">Visa application</p></div></li>
+      <li class="step"><span class="step__marker"></span><div><p class="step__title">Decision</p></div></li>
+    </ol></div></figure>
+  </div>
+</section>
+
+<!-- ============ BANNER ============ -->
+<section class="sec" id="banner">
+  <h2>Banner</h2>
+  <p>For messages about the whole page or case. Four tones reuse the status colors. Use sparingly: one banner per screen.</p>
+  <div class="panel">
+    <div class="banner" data-tone="info" role="status"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-info"/></svg><div><p class="banner__title">Your case officer sent you a message</p><p class="banner__body">They need one more detail for your study plan.</p><div class="banner__actions"><button class="btn btn--secondary" type="button">Read message</button></div></div><button class="banner__close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="banner" data-tone="success" role="status"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-complete"/></svg><div><p class="banner__title">Your documents are approved</p><p class="banner__body">Your file is complete. Next, you will choose your universities.</p></div><button class="banner__close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="banner" data-tone="warning" role="status"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-needed"/></svg><div><p class="banner__title">Your decision is due today</p><p class="banner__body">Choose your universities so we can start your applications.</p><div class="banner__actions"><button class="btn btn--primary" type="button">View options</button></div></div><span></span></div>
+    <div class="banner" data-tone="error" role="alert"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-fixing"/></svg><div><p class="banner__title">There is a problem with your passport scan</p><p class="banner__body">The photo is blurry. Please upload a clearer one by Mon 19 Oct.</p><div class="banner__actions"><button class="btn btn--primary" type="button">Upload again</button></div></div><span></span></div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="sec" id="timeline">
+  <h2>Timeline</h2>
+  <p>A running history of the case. It answers "what is happening?" without a phone call. Most recent first. Dates are absolute plus relative.</p>
+  <div class="grid">
+    <div class="phone"><ol class="timeline" aria-label="Case activity">
+      <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg></span><div><p class="event__title">University options sent to you</p><p class="event__detail">We shortlisted 4 options. Please choose by Wed 14 Oct.</p><span class="event__time">Today, 09:10 · Your case officer</span></div></li>
+      <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg></span><div><p class="event__title">All documents approved</p><p class="event__detail">Your file is complete.</p><span class="event__time">Thu 8 Oct, 16:25 · Document team</span></div></li>
+      <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg></span><div><p class="event__title">Bank statement needs fixing</p><p class="event__detail">The statement was older than 3 months. New deadline: Mon 19 Oct.</p><span class="event__time">Tue 6 Oct, 11:02 · Document team</span></div></li>
+      <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="#i-received"/></svg></span><div><p class="event__title">You uploaded 6 documents</p><span class="event__time">Fri 2 Oct, 20:44 · You</span></div></li>
+      <li class="event"><span class="event__marker"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div><p class="event__title">Contract signed. Welcome!</p><p class="event__detail">Your document checklist is ready.</p><span class="event__time">Mon 7 Sep, 14:00 · Your case officer</span></div></li>
+    </ol></div>
+  </div>
+</section>
+
+<!-- ============ THREAD ============ -->
+<section class="sec" id="thread">
+  <h2>Message thread</h2>
+  <p>Secure messages tied to the case. They replace email back-and-forth. Incoming messages align to the start, the client's own to the end, so the layout mirrors automatically in a right-to-left language.</p>
+  <div class="grid">
+    <div class="phone">
+      <div class="thread" role="log" aria-label="Messages">
+        <div class="msg msg--in"><span class="msg__meta">Your case officer · Today, 09:12</span><p class="msg__bubble">Hello! I sent you 4 university options. Which ones would you like us to apply to?</p></div>
+        <div class="msg msg--out"><span class="msg__meta">You · Today, 09:30</span><p class="msg__bubble">Thank you. Can I choose two now and decide on the others later?</p></div>
+        <div class="msg msg--in"><span class="msg__meta">Your case officer · Today, 09:41</span><p class="msg__bubble">Yes. Please choose the first two by Wednesday. I attached the fee overview.</p><span class="chip"><svg class="icon" aria-hidden="true"><use href="#i-clip"/></svg>fee-overview.pdf · 180 KB</span></div>
+      </div>
+      <div class="composer">
+        <button class="icon-btn" type="button" aria-label="Attach a file"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-clip"/></svg></button>
+        <label class="visually-hidden" for="m1">Write a message</label>
+        <textarea class="field__control" id="m1" rows="1" placeholder="Write a message"></textarea>
+        <button class="icon-btn icon-btn--send" type="button" aria-label="Send message"><svg class="icon icon--lg icon--dir" aria-hidden="true"><use href="#i-send"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPTY ============ -->
+<section class="sec" id="empty">
+  <h2>Empty state</h2>
+  <p>Used when there is nothing to show. For long waits, it reassures: it says what is happening and what the client should do (often nothing).</p>
+  <div class="grid">
+    <div class="phone"><div class="empty">
+      <svg class="empty__art" viewBox="0 0 120 96" aria-hidden="true"><circle cx="60" cy="48" r="40" style="fill:var(--color-bg-accent-mint)"/><rect x="38" y="22" width="44" height="54" rx="8" style="fill:var(--color-bg-surface);stroke:var(--color-border-brand);stroke-width:2"/><path d="M47 38h26M47 48h26M47 58h14" style="stroke:var(--color-border-brand);stroke-width:2;stroke-linecap:round;fill:none"/><circle cx="82" cy="68" r="11" style="fill:var(--color-bg-brand)"/><path d="M77 68l3.5 3.5L87 64.5" style="stroke:var(--color-text-on-brand);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none"/></svg>
+      <h4 class="empty__title">Nothing needed from you right now</h4>
+      <p class="empty__body">Your case officer is preparing your applications. We will email you as soon as something changes.</p>
+      <button class="btn btn--secondary" type="button">View timeline</button>
+    </div></div>
+    <div class="phone"><div class="empty">
+      <svg class="empty__art" viewBox="0 0 120 96" aria-hidden="true"><circle cx="60" cy="48" r="40" style="fill:var(--color-bg-brand-subtle)"/><rect x="30" y="30" width="60" height="36" rx="10" style="fill:var(--color-bg-surface);stroke:var(--color-border-brand);stroke-width:2"/><path d="M42 44h36M42 54h20" style="stroke:var(--color-border-brand);stroke-width:2;stroke-linecap:round;fill:none"/></svg>
+      <h4 class="empty__title">No messages yet</h4>
+      <p class="empty__body">When your case officer writes to you, the message will appear here.</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ REVIEW (STAFF) ============ -->
+<section class="sec" id="review">
+  <h2>Review panel (staff)</h2>
+  <p>Where a document specialist approves or rejects a file. Compact density. A rejection needs a reason and a new deadline, and shows a preview of the message the client will see.</p>
+  <div data-density="compact">
+  <article class="review" aria-label="Review bank statement">
+    <div class="review__preview">
+      <div class="row" style="justify-content:space-between"><h3 class="review__title" style="font-size:1rem;line-height:1.5rem">bank-statement-oct.pdf</h3><span class="pill pill--sm" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="#i-review"/></svg>In review</span></div>
+      <div class="preview-doc" role="img" aria-label="Document preview placeholder">Document preview</div>
+    </div>
+    <div class="review__side">
+      <div><h3 class="review__title">Bank statement</h3><p class="tag" style="margin:var(--space-1) 0 0">Example client · CA-STU-0142 · Uploaded today, 09:40</p></div>
+      <div><h3 style="margin:0 0 var(--space-2);font:600 0.875rem/1.25rem var(--font-family-sans);color:var(--color-text-primary)">Requirement checks</h3>
+        <ul class="checks">
+          <li class="ok"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg><span style="color:var(--color-text-primary)">Format is PDF</span></li>
+          <li class="ok"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg><span style="color:var(--color-text-primary)">Size is 3.2 MB (maximum 10 MB)</span></li>
+          <li class="ok"><svg class="icon" aria-hidden="true"><use href="#i-complete"/></svg><span style="color:var(--color-text-primary)">Name matches passport</span></li>
+          <li class="bad"><svg class="icon" aria-hidden="true"><use href="#i-fixing"/></svg><span style="color:var(--color-text-primary)">Issued within the last 3 months: statement ends 30 June</span></li>
+        </ul></div>
+      <fieldset style="border:0;padding:0;margin:0"><legend class="field__label" style="margin-block-end:var(--space-2)">Decision</legend>
+        <div class="radio-row"><label class="radio"><input type="radio" name="dec"> Approve</label><label class="radio"><input type="radio" name="dec" checked> Reject and request a new file</label></div></fieldset>
+      <div class="field"><label class="field__label" for="r1">Reason</label><select class="field__control" id="r1"><option>Older than 3 months</option><option>Blurry or unreadable</option><option>Wrong document type</option><option>Name does not match passport</option><option>Not in the requested format</option><option>Other</option></select></div>
+      <div class="field"><label class="field__label" for="r2">Note to the client (optional)</label><textarea class="field__control" id="r2" rows="2">Please send a statement issued after 10 July.</textarea></div>
+      <div class="field"><label class="field__label" for="r3">New deadline</label><input class="field__control" id="r3" type="date" value="2026-10-19"></div>
+      <div class="client-preview"><strong>The client will see:</strong> "We could not accept this file. Reason: the statement is older than 3 months. Please send a statement issued after 10 July by Mon 19 Oct."</div>
+      <div class="review__actions"><button class="btn btn--danger" type="button">Reject and notify client</button><button class="btn btn--ghost" type="button">Cancel</button></div>
+    </div>
+  </article></div>
+</section>
+
+<div class="thread">
+        <div class="msg msg--in"><span class="msg__meta">Your case officer · 09:12</span><p class="msg__bubble">Hello! I sent you 4 university options.</p></div>
+        <div class="msg msg--out"><span class="msg__meta">You · 09:30</span><p class="msg__bubble">Thank you. I will choose today.</p></div>
+      </div>
+      <div class="notice" data-tone="waiting"><svg class="icon" aria-hidden="true"><use href="#i-wifi-off"/></svg><span><strong>Connection lost.</strong> Your upload will continue when you are back online.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KPI ============ -->
+<section class="sec" id="kpi">
+  <h2>KPI card and icon chips</h2>
+  <p>Several figures in one white card, each with a tinted icon chip. Used for the summary row at the top of a dashboard. The tint adds meaning only together with the label.</p>
+  <div class="panel">
+    <div class="kpi-card">
+      <div class="kpi"><span class="chip-icon" data-tone="mint"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-complete"/></svg></span><div class="kpi__body"><span class="kpi__value">2 of 6</span><span class="kpi__label">Documents complete</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="amber"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-needed"/></svg></span><div class="kpi__body"><span class="kpi__value">4</span><span class="kpi__label">Open requests</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="blue"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-calendar"/></svg></span><div class="kpi__body"><span class="kpi__value">34</span><span class="kpi__label">Days since your contract</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="rose"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-clock"/></svg></span><div class="kpi__body"><span class="kpi__value">Today</span><span class="kpi__label">Next deadline</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIDE CARD ============ -->
+<section class="sec" id="side">
+  <h2>Side card, help card and meters</h2>
+  <p>The side card holds one headline figure, an illustration, two thin meters and one dark action. The help card sits in the sidebar and offers support in a friendly voice.</p>
+  <div class="grid">
+    <section class="side-card" aria-labelledby="pay-h">
+      <h3 class="side-card__title" id="pay-h" style="color:var(--color-text-primary)">Contract payments</h3>
+      <div class="side-card__head">
+        <div><span class="side-card__big">40%</span><span class="side-card__sub">of your contract is paid</span></div>
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-trip"/></svg>
+      </div>
+      <div class="meters">
+        <div><span class="meter__label">Paid 40%</span><div class="meter__bar" aria-hidden="true"><span style="inline-size:40%"></span></div></div>
+        <div><span class="meter__label">Remaining 60%</span><div class="meter__bar" aria-hidden="true"><span style="inline-size:60%;--meter:var(--color-status-needed-border)"></span></div></div>
+      </div>
+      <p class="small muted">Next: application fee, due Thu 22 Oct.</p>
+      <a class="btn btn--dark" href="#side">See payment details<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </section>
+    <div class="panel" style="align-content:start">
+      <div class="help-card">
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-help"/></svg>
+        <strong>Questions about your case?</strong>
+        <p>Your case officer replies on working days.</p>
+        <a class="btn btn--secondary" href="#side">Send a message</a>
+      </div>
+      <h3>Illustrations</h3>
+      <div class="row">
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-trip"/></svg>
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-help"/></svg>
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-review"/></svg>
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-empty"/></svg>
+      </div>
+      <p class="tag">Line illustrations use the text color for outlines and the brand tints for fills. Decorative: hidden from screen readers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHART ============ -->
+<section class="sec" id="chart">
+  <h2>Path chart</h2>
+  <p>A smooth curve with one highlighted point and a dark tooltip. On a client dashboard it shows the case journey; on the staff console it shows weekly volume. The chart always has a text alternative, and scrolls sideways on narrow screens instead of shrinking its text.</p>
+  <section class="chart-card" aria-labelledby="path-h2">
+    <div class="chart-card__head"><h3 class="section-title" id="path-h2">Your path</h3><span class="tiny">Step 4 of 9</span></div>
+    <div class="chart-scroll">
+      <svg class="chart" viewBox="0 0 650 230" role="img" aria-labelledby="path-t2 path-d2">
+        <title id="path-t2">Your path: step 4 of 9</title>
+        <desc id="path-d2">You have finished contract signed, initial documents and document review. You are now on choose your universities.</desc>
+        <line class="grid-line" x1="30" y1="50" x2="630" y2="50"/><line class="grid-line" x1="30" y1="90" x2="630" y2="90"/><line class="grid-line" x1="30" y1="130" x2="630" y2="130"/><line class="grid-line" x1="30" y1="170" x2="630" y2="170"/>
+        <path class="line line--next" d="M256.2 84.0 C279.2 78.3 302.1 101.3 325.0 98.0 C347.9 94.7 370.8 67.0 393.8 64.0 C416.7 61.0 439.6 83.7 462.5 80.0 C485.4 76.3 508.3 46.0 531.2 42.0 C554.2 38.0 588.5 53.7 600.0 56.0"/>
+        <path class="line line--brand" d="M50.0 150.0 C61.5 144.7 95.8 121.0 118.8 118.0 C141.7 115.0 164.6 137.7 187.5 132.0 C210.4 126.3 233.3 89.7 256.2 84.0"/>
+        <circle class="dot" cx="50" cy="150" r="5"/><circle class="dot" cx="118.8" cy="118" r="5"/><circle class="dot" cx="187.5" cy="132" r="5"/>
+        <circle class="dot--todo dot" cx="325" cy="98" r="5"/><circle class="dot--todo dot" cx="393.8" cy="64" r="5"/><circle class="dot--todo dot" cx="462.5" cy="80" r="5"/><circle class="dot--todo dot" cx="531.2" cy="42" r="5"/><circle class="dot--todo dot" cx="600" cy="56" r="5"/>
+        <line class="guide" x1="256.2" y1="96" x2="256.2" y2="190"/>
+        <circle class="now-ring" cx="256.2" cy="84" r="11"/><circle class="now-core" cx="256.2" cy="84" r="4"/>
+        <rect class="tip" x="176" y="14" width="160" height="44" rx="12"/><text class="tip-text" x="192" y="32">Step 4 of 9</text><text class="tip-sub" x="192" y="48">Choose your universities</text>
+        <g class="axis-text" text-anchor="middle"><text x="50" y="214">Contract</text><text x="118.8" y="214">Documents</text><text x="187.5" y="214">Review</text><text class="axis-text--strong" x="256.2" y="214">Universities</text><text x="325" y="214">Applications</text><text x="393.8" y="214">Offers</text><text x="462.5" y="214">Visa prep</text><text x="531.2" y="214">Visa</text><text x="600" y="214">Decision</text></g>
+      </svg>
+    </div>
+  </section>
+</section>
+
+<!-- ============ TABLE ============ -->
+<section class="sec" id="table">
+  <h2>Table card, tabs and switch</h2>
+  <p>Staff work lists: a title, tabs, a search field and a switch above a data table. The table scrolls sideways on narrow screens. Row actions name the row for screen readers.</p>
+  <section class="table-card" data-density="compact" aria-labelledby="tq-h">
+    <div class="table-card__head">
+      <h3 id="tq-h">Work queue</h3>
+      <div class="tabs" role="tablist" aria-label="Queues">
+        <button class="tab" role="tab" aria-selected="true" type="button">To review <span class="count">6</span></button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" type="button">Needs a call <span class="count">4</span></button>
+      </div>
+      <div class="search"><label class="visually-hidden" for="tq">Search this list</label><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input class="field__control field__control--pill" id="tq" type="search" placeholder="Search this list"></div>
+      <button class="switch" type="button" role="switch" aria-checked="true" id="sw-demo"><span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>Waiting over 1 day</button>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <caption class="visually-hidden">Example work queue</caption>
+        <thead><tr><th scope="col">Client</th><th scope="col">Case</th><th scope="col">Document</th><th scope="col">Waiting</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Action</span></th></tr></thead>
+        <tbody>
+          <tr><td><strong>Hamid R.</strong></td><td class="num nowrap">CA-STU-0150</td><td>Language test result</td><td><span class="age age--late">5 days</span></td><td><span class="pill pill--sm" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="#i-review"/></svg>In review</span></td><td><button class="btn btn--secondary row-action" type="button">Review<span class="visually-hidden"> Language test result for Hamid R.</span></button></td></tr>
+          <tr class="is-selected"><td><strong>Ali M.</strong></td><td class="num nowrap">CA-STU-0119</td><td>Transcript (translated)</td><td><span class="age age--late">2 days</span></td><td><span class="pill pill--sm" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="#i-review"/></svg>In review</span></td><td><button class="btn btn--secondary row-action" type="button">Review<span class="visually-hidden"> Transcript for Ali M.</span></button></td></tr>
+          <tr><td><strong>Sara A.</strong></td><td class="num nowrap">CA-STU-0142</td><td>Bank statement</td><td><span class="age">2 h</span></td><td><span class="pill pill--sm" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="#i-review"/></svg>In review</span></td><td><button class="btn btn--secondary row-action" type="button">Review<span class="visually-hidden"> Bank statement for Sara A.</span></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>
+
+<!-- ============ SHELLS ============ -->
+<section class="sec" id="shells">
+  <h2>Page shells</h2>
+  <p>The full screens, live. Open them in their own tab to test keyboard use and zoom.</p>
+  <div class="row">
+    <a class="btn btn--dark" href="screens/client-dashboard.html">Client dashboard<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="btn btn--secondary" href="screens/client-upload.html">Document upload</a>
+    <a class="btn btn--secondary" href="screens/client-timeline.html">Case timeline</a>
+    <a class="btn btn--secondary" href="screens/staff-review-queue.html">Staff review queue</a>
+  </div>
+  <iframe title="Client dashboard preview" src="screens/client-dashboard.html" style="inline-size:100%;block-size:640px;border:0;border-radius:var(--radius-lg);background:var(--color-bg-page)" loading="lazy"></iframe>
+</section>
+
+</main>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review queue | Pathly Staff</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<!-- Preview only: the real portal must self-host Host Grotesk (third-party font CDNs can be blocked in Iran). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<link rel="stylesheet" href="screens.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="shell" data-density="compact">
+  <header class="topbar">
+    <div class="topbar__tools">
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Main (mobile)">
+          <ul class="side-nav">
+            <li><a href="staff-review-queue.html" aria-current="page">Review queue</a></li>
+            <li><a href="#">Cases</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Templates</a></li>
+            <li><a href="#">Reports</a></li>
+          </ul>
+        </nav>
+      </details>
+      <a class="brand" href="staff-review-queue.html" aria-label="Pathly staff console, home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H13a3.5 3.5 0 0 0 0-7h-2a3.5 3.5 0 0 1 0-7h4.8"/></svg></span>Pathly</a>
+      <span class="tag-chip only-wide">Staff console</span>
+    </div>
+    <div class="topbar__tools">
+      <div class="search only-wide" role="search" style="flex:0 1 18rem">
+        <label class="visually-hidden" for="gq">Search all clients, cases and documents</label>
+        <svg class="icon" aria-hidden="true"><use href="../icons.svg#i-search"/></svg>
+        <input class="field__control field__control--pill" id="gq" type="search" placeholder="Search clients, cases">
+      </div>
+      <button class="icon-btn" type="button" aria-label="Notifications"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-bell"/></svg></button>
+      <button class="user" type="button" aria-label="Account menu for a document specialist"><span class="avatar" aria-hidden="true">DS</span><span class="user__name" aria-hidden="true">Document team</span><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chevron-down"/></svg></button>
+    </div>
+  </header>
+
+  <aside class="sidenav" aria-label="Sidebar">
+    <nav aria-label="Main">
+      <ul class="side-nav">
+        <li><a href="staff-review-queue.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-review"/></svg>Review queue<span class="count" id="nav-count">6</span></a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg>Cases</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-user"/></svg>Clients</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-list"/></svg>Templates</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-calendar"/></svg>Reports</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="side-label" id="help-l">Help</p>
+      <ul class="side-nav" aria-labelledby="help-l">
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-settings"/></svg>Settings</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-support"/></svg>Support</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main" class="main-col">
+    <div class="page-head">
+      <h1 class="page-title">Review queue</h1>
+      <p class="page-sub">Documents waiting for a specialist, and clients who need a call. Example data for design review.</p>
+    </div>
+
+    <section class="kpi-card" aria-label="Summary">
+      <div class="kpi"><span class="chip-icon" data-tone="blue"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-review"/></svg></span><div class="kpi__body"><span class="kpi__value" id="tile-review">6</span><span class="kpi__label">To review</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="amber"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg></span><div class="kpi__body"><span class="kpi__value">9</span><span class="kpi__label">Waiting on clients</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="rose"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-phone"/></svg></span><div class="kpi__body"><span class="kpi__value" id="tile-call">4</span><span class="kpi__label">Need a call</span></div></div>
+      <div class="kpi"><span class="chip-icon" data-tone="teal"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-calendar"/></svg></span><div class="kpi__body"><span class="kpi__value">3</span><span class="kpi__label">No activity for 14 days</span></div></div>
+    </section>
+
+    <div class="cols cols--aside">
+      <section class="chart-card" aria-labelledby="wk-h">
+        <div class="chart-card__head"><h2 class="section-title" id="wk-h">Documents reviewed this week</h2><span class="tiny">Example data</span></div>
+        <div class="chart-scroll">
+          <svg class="chart" viewBox="0 0 680 230" role="img" aria-labelledby="wk-t wk-d">
+            <title id="wk-t">Documents reviewed per day this week</title>
+            <desc id="wk-d">Monday 22, Tuesday 31, Wednesday 26, Thursday 40, Friday 35, Saturday 12, Sunday 8.</desc>
+            <g class="axis-text" text-anchor="end"><text x="40" y="146">10</text><text x="40" y="118">20</text><text x="40" y="90">30</text><text x="40" y="62">40</text><text x="40" y="34">50</text><text x="40" y="174">0</text></g>
+            <line class="grid-line" x1="56" y1="142" x2="650" y2="142"/><line class="grid-line" x1="56" y1="114" x2="650" y2="114"/><line class="grid-line" x1="56" y1="86" x2="650" y2="86"/><line class="grid-line" x1="56" y1="58" x2="650" y2="58"/><line class="grid-line" x1="56" y1="30" x2="650" y2="30"/>
+            <path class="line" d="M70.0 108.4 C85.0 104.2 130.0 85.1 160.0 83.2 C190.0 81.3 220.0 101.4 250.0 97.2 C280.0 93.0 310.0 62.2 340.0 58.0 C370.0 53.8 400.0 58.9 430.0 72.0 C460.0 85.1 490.0 123.8 520.0 136.4 C550.0 149.0 595.0 145.7 610.0 147.6"/>
+            <line class="guide" x1="340" y1="70" x2="340" y2="190"/>
+            <circle class="now-ring" cx="340" cy="58" r="11"/><circle class="now-core" cx="340" cy="58" r="4"/>
+            <rect class="tip" x="284" y="2" width="112" height="38" rx="12" style="transform:translateY(0)"/>
+            <text class="tip-text" x="298" y="18">Thursday</text><text class="tip-sub" x="298" y="32">40 reviewed</text>
+            <g class="axis-text" text-anchor="middle"><text x="70" y="214">Mon</text><text x="160" y="214">Tue</text><text x="250" y="214">Wed</text><text class="axis-text--strong" x="340" y="214">Thu</text><text x="430" y="214">Fri</text><text x="520" y="214">Sat</text><text x="610" y="214">Sun</text></g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="side-card" aria-labelledby="call-h">
+        <h2 class="side-card__title" id="call-h">Needs a call</h2>
+        <div class="side-card__head">
+          <div><span class="side-card__big" id="side-call">4</span><span class="side-card__sub">clients after 3 unanswered reminders</span></div>
+          <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="../art.svg#a-help"/></svg>
+        </div>
+        <div class="meters">
+          <div><span class="meter__label">Calls logged today</span><div class="meter__bar" aria-hidden="true"><span id="meter-done" style="inline-size:0%"></span></div></div>
+          <div><span class="meter__label">Still to call</span><div class="meter__bar" aria-hidden="true"><span id="meter-left" style="inline-size:100%;--meter:var(--color-status-needs-fixing-text)"></span></div></div>
+        </div>
+        <button class="btn btn--dark" type="button" id="open-calls">Open call list<svg class="icon" aria-hidden="true"><use href="../icons.svg#i-arrow-right"/></svg></button>
+      </section>
+    </div>
+
+    <section class="table-card" aria-labelledby="q-h">
+      <div class="table-card__head">
+        <h2 id="q-h">Work queue</h2>
+        <div role="tablist" aria-label="Queues" class="tabs" id="tabs">
+          <button class="tab" role="tab" id="tab-review" aria-selected="true" aria-controls="panel-review" type="button">To review <span class="count" id="tab-review-count">6</span></button>
+          <button class="tab" role="tab" id="tab-call" aria-selected="false" aria-controls="panel-call" tabindex="-1" type="button">Needs a call <span class="count" id="tab-call-count">4</span></button>
+        </div>
+        <div class="search">
+          <label class="visually-hidden" for="q">Search this list</label>
+          <svg class="icon" aria-hidden="true"><use href="../icons.svg#i-search"/></svg>
+          <input class="field__control field__control--pill" id="q" type="search" placeholder="Search this list">
+        </div>
+        <button class="switch" type="button" role="switch" aria-checked="false" id="sw-late"><span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>Waiting over 1 day</button>
+      </div>
+      <p class="visually-hidden" role="status" aria-live="polite" id="result-count"></p>
+
+      <div role="tabpanel" id="panel-review" aria-labelledby="tab-review">
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption class="visually-hidden">Documents waiting for review</caption>
+            <thead><tr><th scope="col">Client</th><th scope="col">Case</th><th scope="col">Document</th><th scope="col">Country</th><th scope="col">Uploaded</th><th scope="col">Waiting</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Action</span></th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="panel-call" aria-labelledby="tab-call" hidden>
+        <p class="small muted" style="margin-block-end:var(--space-3)">Clients appear here after 3 unanswered reminders (example rule). Call them, then log the call so the case history stays complete.</p>
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption class="visually-hidden">Clients who need a call</caption>
+            <thead><tr><th scope="col">Client</th><th scope="col">Missing</th><th scope="col">Reminders sent</th><th scope="col">Last contact</th><th scope="col">Deadline</th><th scope="col"><span class="visually-hidden">Action</span></th></tr></thead>
+            <tbody id="call-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div id="detail" tabindex="-1"></div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  // ---------- Example data ----------
+  var ITEMS = [
+    { id: 1, client: 'Sara A.', ref: 'CA-STU-0142', country: 'Canada', doc: 'Bank statement', up: 'Today, 09:40', age: '2 h', hours: 2,
+      checks: [[1, 'Format is PDF'], [1, 'Size is 3.2 MB (maximum 10 MB)'], [1, 'Name matches passport'], [0, 'Issued within the last 3 months: statement ends 30 June']],
+      failReason: 'Older than 3 months', note: 'Please send a statement issued after 10 July.' },
+    { id: 2, client: 'Reza K.', ref: 'CA-STU-0131', country: 'Canada', doc: 'Passport copy', up: 'Today, 05:12', age: '5 h', hours: 5,
+      checks: [[1, 'Format is JPG'], [1, 'All four corners visible'], [1, 'Passport valid for 6+ months'], [1, 'Name matches contract']] },
+    { id: 3, client: 'Maryam T.', ref: 'FR-STU-0087', country: 'France', doc: 'Campus France form', up: 'Yesterday, 15:30', age: '1 day', hours: 20,
+      checks: [[1, 'Format is PDF'], [1, 'All pages present'], [0, 'Signature present: page 3 is unsigned']],
+      failReason: 'Missing signature', note: 'Please sign page 3 and upload the form again.' },
+    { id: 4, client: 'Niloufar S.', ref: 'FR-STU-0092', country: 'France', doc: 'Proof of funds', up: 'Today, 07:05', age: '3 h', hours: 3,
+      checks: [[1, 'Format is PDF'], [1, 'Issued within the last 3 months'], [1, 'Name matches passport'], [1, 'Amount meets the minimum']] },
+    { id: 5, client: 'Ali M.', ref: 'CA-STU-0119', country: 'Canada', doc: 'Transcript (translated)', up: 'Thu 8 Oct, 11:00', age: '2 days', hours: 47,
+      checks: [[1, 'Format is PDF'], [1, 'Certified translation attached'], [1, 'Official stamp visible']] },
+    { id: 6, client: 'Hamid R.', ref: 'CA-STU-0150', country: 'Canada', doc: 'Language test result', up: 'Mon 5 Oct, 16:20', age: '5 days', hours: 114,
+      checks: [[1, 'Format is PDF'], [0, 'Valid within the last 2 years: test taken in March 2023']],
+      failReason: 'Expired document', note: 'Please send a more recent result.' }
+  ];
+  var CALLS = [
+    { client: 'Hamid R.', ref: 'CA-STU-0150', missing: 'Language test result (expired)', n: 3, last: 'Tue 6 Oct, by email', over: 'Overdue by 5 days' },
+    { client: 'Ali M.', ref: 'CA-STU-0119', missing: 'Translated transcript', n: 3, last: 'Wed 7 Oct, by email', over: 'Overdue by 3 days' },
+    { client: 'Sara A.', ref: 'CA-STU-0142', missing: 'Study plan questionnaire', n: 3, last: 'Mon 5 Oct, by email', over: 'Overdue by 2 days' },
+    { client: 'Parisa D.', ref: 'FR-STU-0079', missing: 'Campus France fee proof', n: 3, last: 'Fri 2 Oct, by email', over: 'Overdue by 8 days' }
+  ];
+  var queue = ITEMS.slice(), selected = null, calls = CALLS.slice(), callsDone = 0, tab = 0;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var icon = function (n, c) { return '<svg class="icon ' + (c || '') + '" aria-hidden="true"><use href="../icons.svg#i-' + n + '"/></svg>'; };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var DEADLINE = '2026-10-17';
+  function fmtDate(iso) { var d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); }
+  function toast(msg) { var t = $('toast'); t.innerHTML = '<div class="banner" data-tone="success">' + icon('complete', 'icon--lg') + '<div><p class="banner__title">' + esc(msg) + '</p></div><span></span></div>'; clearTimeout(toast.t); toast.t = setTimeout(function () { t.innerHTML = ''; }, 5000); }
+  function counts() {
+    var c = calls.length - callsDone;
+    $('tab-review-count').textContent = queue.length; $('tile-review').textContent = queue.length; $('nav-count').textContent = queue.length;
+    $('tab-call-count').textContent = c; $('tile-call').textContent = c; $('side-call').textContent = c;
+    $('meter-done').style.inlineSize = Math.round(callsDone / calls.length * 100) + '%';
+    $('meter-left').style.inlineSize = Math.round(c / calls.length * 100) + '%';
+  }
+  function term() { return $('q').value.trim().toLowerCase(); }
+
+  // ---------- To review table ----------
+  function renderQueue() {
+    var t = term(), late = $('sw-late').getAttribute('aria-checked') === 'true';
+    var list = queue.filter(function (i) {
+      return (!late || i.hours > 24) && (!t || (i.client + ' ' + i.doc + ' ' + i.ref + ' ' + i.country).toLowerCase().indexOf(t) > -1);
+    }).sort(function (a, b) { return b.hours - a.hours; });
+    $('rows').innerHTML = list.map(function (i) {
+      return '<tr' + (selected && selected.id === i.id ? ' class="is-selected"' : '') + '>' +
+        '<td><strong>' + esc(i.client) + '</strong></td><td class="num nowrap">' + esc(i.ref) + '</td><td>' + esc(i.doc) + '</td><td>' + esc(i.country) + '</td><td class="nowrap">' + esc(i.up) + '</td>' +
+        '<td class="nowrap"><span class="age' + (i.hours > 24 ? ' age--late' : '') + '">' + esc(i.age) + '</span></td>' +
+        '<td><span class="pill pill--sm" data-state="in-review">' + icon('review') + 'In review</span></td>' +
+        '<td><button class="btn btn--secondary row-action" type="button" data-id="' + i.id + '">Review<span class="visually-hidden"> ' + esc(i.doc) + ' for ' + esc(i.client) + '</span></button></td></tr>';
+    }).join('') || '<tr><td colspan="8" class="muted">No documents match. Clear the search or the filter.</td></tr>';
+    if (tab === 0) $('result-count').textContent = list.length + ' document' + (list.length === 1 ? '' : 's') + ' shown.';
+  }
+
+  // ---------- Review panel ----------
+  function renderDetail() {
+    var host = $('detail');
+    if (!selected) { host.innerHTML = ''; return; }
+    var i = selected, fail = i.checks.some(function (c) { return !c[0]; });
+    host.innerHTML =
+      '<article class="review review--inline" aria-labelledby="rv-h">' +
+        '<div class="review__preview"><div style="display:flex;justify-content:space-between;gap:var(--space-2);flex-wrap:wrap;align-items:center"><h2 class="review__title" id="rv-h" tabindex="-1" style="font-size:1.125rem;line-height:1.625rem">Reviewing: ' + esc(i.doc) + '</h2><span class="pill pill--sm" data-state="in-review">' + icon('review') + 'In review</span></div>' +
+        '<div class="preview-doc" role="img" aria-label="Preview of ' + esc(i.doc) + ' (placeholder)">Document preview</div></div>' +
+        '<form class="review__side" id="rv-form" novalidate>' +
+          '<p class="small muted">' + esc(i.client) + ' · ' + esc(i.ref) + ' · ' + esc(i.country) + '<br>Uploaded ' + esc(i.up) + '</p>' +
+          '<div><h3 style="margin:0 0 var(--space-2);font:600 0.875rem/1.25rem var(--font-family-sans)">Requirement checks</h3><ul class="checks">' +
+            i.checks.map(function (c) { return '<li class="' + (c[0] ? 'ok' : 'bad') + '">' + icon(c[0] ? 'complete' : 'fixing') + '<span style="color:var(--color-text-primary)"><span class="visually-hidden">' + (c[0] ? 'Passed: ' : 'Failed: ') + '</span>' + esc(c[1]) + '</span></li>'; }).join('') +
+          '</ul></div>' +
+          '<fieldset style="border:0;padding:0;margin:0"><legend class="field__label" style="margin-block-end:var(--space-2)">Decision</legend><div class="radio-row">' +
+            '<label class="radio"><input type="radio" name="dec" value="approve"' + (fail ? '' : ' checked') + '> Approve</label>' +
+            '<label class="radio"><input type="radio" name="dec" value="reject"' + (fail ? ' checked' : '') + '> Reject and request a new file</label></div></fieldset>' +
+          '<div id="rej" ' + (fail ? '' : 'hidden') + ' class="stack">' +
+            '<div class="field"><label class="field__label" for="rv-reason">Reason</label><select class="field__control" id="rv-reason">' +
+              ['Older than 3 months', 'Blurry or unreadable', 'Wrong document type', 'Name does not match passport', 'Missing signature', 'Expired document', 'Not in the requested format', 'Other'].map(function (r) { return '<option' + (i.failReason === r ? ' selected' : '') + '>' + r + '</option>'; }).join('') + '</select></div>' +
+            '<div class="field"><label class="field__label" for="rv-note">Note to the client (optional)</label><textarea class="field__control" id="rv-note" rows="2">' + esc(i.note || '') + '</textarea></div>' +
+            '<div class="field" id="rv-date-f"><label class="field__label" for="rv-date">New deadline</label><input class="field__control" id="rv-date" type="date" value="' + DEADLINE + '" aria-describedby="rv-date-m"><span class="field__msg" id="rv-date-m">The client sees this date.</span></div>' +
+          '</div>' +
+          '<div class="client-preview" id="rv-preview"></div>' +
+          '<div class="review__actions"><button class="btn btn--primary" type="submit" id="rv-submit">Approve and notify client</button><button class="btn btn--ghost" type="button" id="rv-close">Close</button></div>' +
+        '</form>' +
+      '</article>';
+    syncPreview();
+  }
+  function syncPreview() {
+    var f = $('rv-form'); if (!f) return;
+    var dec = f.elements.dec.value, i = selected, btn = $('rv-submit');
+    $('rej').hidden = dec !== 'reject';
+    if (dec === 'approve') {
+      btn.className = 'btn btn--primary'; btn.textContent = 'Approve and notify client';
+      $('rv-preview').innerHTML = '<strong>The client will see:</strong> "Your ' + esc(i.doc.toLowerCase()) + ' was approved. Nothing more to do."';
+    } else {
+      btn.className = 'btn btn--danger'; btn.textContent = 'Reject and notify client';
+      var reason = $('rv-reason').value, note = $('rv-note').value.trim(), d = $('rv-date').value;
+      $('rv-preview').innerHTML = '<strong>The client will see:</strong> "We could not accept this file. Reason: ' + esc(reason.toLowerCase()) + '. ' + (note ? esc(note) + ' ' : '') + 'New deadline: ' + (d ? esc(fmtDate(d)) : '[choose a date]') + '."';
+    }
+  }
+  function done(msg) {
+    queue.splice(queue.indexOf(selected), 1); selected = null;
+    counts(); renderQueue(); renderDetail(); toast(msg);
+    $('q').focus();
+  }
+
+  // ---------- Events ----------
+  $('rows').addEventListener('click', function (e) {
+    var b = e.target.closest('.row-action'); if (!b) return;
+    selected = queue.filter(function (i) { return i.id === +b.getAttribute('data-id'); })[0];
+    renderQueue(); renderDetail();
+    var h = $('rv-h'); h.scrollIntoView({ behavior: 'smooth', block: 'start' }); h.focus({ preventScroll: true });
+  });
+  $('q').addEventListener('input', function () { tab === 0 ? renderQueue() : renderCalls(); });
+  $('sw-late').addEventListener('click', function () { var on = this.getAttribute('aria-checked') !== 'true'; this.setAttribute('aria-checked', String(on)); renderQueue(); });
+  $('detail').addEventListener('change', syncPreview);
+  $('detail').addEventListener('input', syncPreview);
+  $('detail').addEventListener('click', function (e) { if (e.target.id === 'rv-close') { selected = null; renderQueue(); renderDetail(); } });
+  $('detail').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = $('rv-form'), dec = f.elements.dec.value, i = selected;
+    if (dec === 'approve') { done(i.doc + ' approved. ' + i.client + ' was notified by email.'); return; }
+    var fld = $('rv-date-f'), d = $('rv-date').value;
+    if (!d || d <= '2026-10-11') {
+      fld.classList.add('is-error'); $('rv-date').setAttribute('aria-invalid', 'true');
+      $('rv-date-m').innerHTML = icon('fixing') + 'Choose a deadline after today so the client has time to respond.';
+      $('rv-date').focus(); return;
+    }
+    done(i.doc + ' rejected. ' + i.client + ' was notified and has until ' + fmtDate(d) + '.');
+  });
+
+  // ---------- Needs a call ----------
+  function renderCalls() {
+    var t = term();
+    var list = calls.map(function (c, k) { c.k = k; return c; }).filter(function (c) { return !t || (c.client + ' ' + c.missing + ' ' + c.ref).toLowerCase().indexOf(t) > -1; });
+    $('call-rows').innerHTML = list.map(function (c) {
+      return '<tr><td><strong>' + esc(c.client) + '</strong><br><span class="tiny">' + esc(c.ref) + '</span></td><td>' + esc(c.missing) + '</td><td class="num">' + c.n + '</td><td>' + esc(c.last) + '</td>' +
+        '<td><span class="deadline" data-timing="overdue">' + icon('clock') + esc(c.over) + '</span></td>' +
+        '<td>' + (c.done ? '<span class="pill pill--sm" data-state="complete">' + icon('complete') + 'Call logged</span>' : '<button class="btn btn--secondary row-action" type="button" data-call="' + c.k + '">' + icon('phone') + 'Log call<span class="visually-hidden"> with ' + esc(c.client) + '</span></button>') + '</td></tr>';
+    }).join('') || '<tr><td colspan="6" class="muted">No clients match your search.</td></tr>';
+    if (tab === 1) $('result-count').textContent = list.length + ' client' + (list.length === 1 ? '' : 's') + ' shown.';
+  }
+  $('call-rows').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-call]'); if (!b) return;
+    var c = calls[+b.getAttribute('data-call')]; c.done = true; callsDone++; counts(); renderCalls(); toast('Call with ' + c.client + ' logged in the case history.');
+  });
+
+  // ---------- Tabs ----------
+  var tabs = [$('tab-review'), $('tab-call')], panels = [$('panel-review'), $('panel-call')];
+  function activate(n, focus) {
+    tab = n;
+    tabs.forEach(function (t, k) { t.setAttribute('aria-selected', String(k === n)); t.tabIndex = k === n ? 0 : -1; panels[k].hidden = k !== n; });
+    $('sw-late').hidden = n !== 0;
+    n === 0 ? renderQueue() : renderCalls();
+    if (focus) tabs[n].focus();
+  }
+  tabs.forEach(function (t, k) {
+    t.addEventListener('click', function () { activate(k); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); activate((k + 1) % tabs.length, true); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); activate((k + tabs.length - 1) % tabs.length, true); }
+      if (e.key === 'Home') { e.preventDefault(); activate(0, true); }
+      if (e.key === 'End') { e.preventDefault(); activate(tabs.length - 1, true); }
+    });
+  });
+  $('open-calls').addEventListener('click', function () { activate(1, true); $('tabs').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+
+  counts(); renderQueue(); renderCalls();
+})();
+</script>
+</body>
+</html>

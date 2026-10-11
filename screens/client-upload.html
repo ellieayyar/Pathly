@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upload bank statement | Pathly</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<!-- Preview only: the real portal must self-host Host Grotesk (third-party font CDNs can be blocked in Iran). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<link rel="stylesheet" href="screens.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="client-dashboard.html" aria-label="Pathly, home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H13a3.5 3.5 0 0 0 0-7h-2a3.5 3.5 0 0 1 0-7h4.8"/></svg></span>Pathly</a>
+    <div class="topbar__tools">
+      <button class="icon-btn" type="button" aria-label="Notifications, 2 new"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-bell"/></svg></button>
+      <button class="user" type="button" aria-label="Account menu for Sara Ahmadi"><span class="avatar" aria-hidden="true">SA</span><span class="user__name" aria-hidden="true">Sara</span><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chevron-down"/></svg></button>
+    </div>
+  </header>
+
+  <aside class="sidenav" aria-label="Sidebar">
+    <nav aria-label="Main">
+      <ul class="side-nav">
+        <li><a href="client-dashboard.html"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-home"/></svg>Home</a></li>
+        <li><a href="client-upload.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg>Documents</a></li>
+        <li><a href="client-timeline.html"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-list"/></svg>Timeline</a></li>
+        <li><a href="../design-system.html#thread"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg>Messages<span class="count">1</span></a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="side-label" id="help-l">Help</p>
+      <ul class="side-nav" aria-labelledby="help-l">
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-settings"/></svg>Settings</a></li>
+        <li><a href="#"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-support"/></svg>Support</a></li>
+      </ul>
+    </div>
+    <div class="help-card">
+      <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="../art.svg#a-help"/></svg>
+      <strong>Questions about your case?</strong>
+      <p>Your case officer replies on working days.</p>
+      <a class="btn btn--secondary" href="../design-system.html#thread">Send a message</a>
+    </div>
+  </aside>
+
+  <main id="main" class="main-col">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="client-dashboard.html"><svg class="icon" aria-hidden="true" style="transform:scaleX(-1)"><use href="../icons.svg#i-chevron"/></svg>Home</a>
+      <span aria-hidden="true">/</span>
+      <span>Documents</span>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Bank statement</span>
+    </nav>
+
+    <div class="page-head">
+      <h1 class="page-title">Upload your bank statement</h1>
+      <p class="page-sub">We use it to confirm you can cover your studies. Please read the requirements, then take a photo or choose a file.</p>
+    </div>
+
+    <div id="summary-slot" tabindex="-1"></div>
+
+    <div class="cols cols--aside">
+      <div class="stack stack--lg">
+
+        <section class="card" aria-labelledby="req-h">
+          <h2 class="card__title" id="req-h">What we need</h2>
+          <ul class="req-list">
+            <li><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg>Statement for the last 3 months, issued after 10 July.</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg>Shows your full name and account number.</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg>Official bank document, stamped or downloaded from your bank. No screenshots of an app.</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-check"/></svg>PDF, JPG or PNG, up to 10 MB. Several photos are fine: add them one by one.</li>
+          </ul>
+          <div class="request__meta"><span class="pill" data-state="needed" id="slot-pill"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-needed"/></svg>Needed</span><span class="deadline" data-timing="soon"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-clock"/></svg>Due Wed 14 Oct, in 4 days</span></div>
+        </section>
+
+        <form id="upload-form" novalidate class="card" aria-labelledby="up-h">
+          <h2 class="card__title" id="up-h">Your file</h2>
+
+          <div id="slot" class="upload__zone" data-state="empty">
+            <!-- Empty -->
+            <div data-show="empty" class="stack">
+              <ul class="upload__tips"><li>Place the page flat in good light.</li><li>Make sure all four corners are visible.</li><li>No glare or shadows over the text.</li></ul>
+              <div class="upload__actions">
+                <label class="btn btn--primary" for="file-camera"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-camera"/></svg>Take photo</label>
+                <label class="btn btn--secondary" for="file-any"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-upload"/></svg>Choose file</label>
+              </div>
+              <input class="visually-hidden" id="file-camera" type="file" accept="image/*" capture="environment" aria-describedby="file-help">
+              <input class="visually-hidden" id="file-any" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/*" aria-describedby="file-help">
+              <p class="tiny" id="file-help">PDF, JPG or PNG, up to 10 MB.</p>
+            </div>
+
+            <!-- Uploading -->
+            <div data-show="uploading" class="stack" hidden>
+              <div class="upload__row"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-doc"/></svg><div class="upload__file"><span class="upload__filename" id="u-name">bank-statement.pdf</span><span class="upload__sub" id="u-sub">Uploading 0%</span></div></div>
+              <div class="progress" role="progressbar" aria-label="Upload progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="u-bar"><span style="inline-size:0%"></span></div>
+              <div class="upload__actions"><button class="btn btn--ghost" type="button" id="u-cancel">Cancel</button></div>
+              <p class="tiny" id="u-live" role="status">If you lose your connection, the upload continues by itself when you are back online.</p>
+            </div>
+
+            <!-- Uploaded -->
+            <div data-show="uploaded" class="stack" hidden>
+              <div class="upload__row"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-doc"/></svg><div class="upload__file"><span class="upload__filename" id="d-name">bank-statement.pdf</span><span class="upload__sub">Added just now</span></div><button class="btn btn--ghost" type="button" id="u-replace">Replace</button></div>
+            </div>
+          </div>
+
+          <div class="field" id="note-field"><label class="field__label" for="note">Note for your case officer (optional)</label><textarea class="field__control" id="note" rows="2" placeholder="For example: my bank only issues monthly statements."></textarea></div>
+
+          <div class="request__actions"><button class="btn btn--dark" type="submit" id="send-btn">Send for review<svg class="icon" aria-hidden="true"><use href="../icons.svg#i-arrow-right"/></svg></button></div>
+          <p class="tiny">After you send it, a specialist checks it. We will email you the result.</p>
+        </form>
+      </div>
+
+      <aside class="stack" aria-label="Your documents">
+        <section class="card" aria-labelledby="docs-h">
+          <h2 class="card__title" id="docs-h">All your documents</h2>
+          <ul class="doc-list">
+            <li><span class="name">Passport copy</span><span class="pill pill--sm" data-state="complete"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-complete"/></svg>Complete</span></li>
+            <li><span class="name">Photo</span><span class="pill pill--sm" data-state="complete"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-complete"/></svg>Complete</span></li>
+            <li><a href="#" aria-label="Transcript, in review">Transcript</a><span class="pill pill--sm" data-state="in-review"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-review"/></svg>In review</span></li>
+            <li><span class="name" aria-current="page">Bank statement</span><span class="pill pill--sm" data-state="needed" id="side-pill"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-needed"/></svg>Needed</span></li>
+            <li><span class="name">Language test result</span><span class="pill pill--sm" data-state="expired"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-expired"/></svg>Expired</span></li>
+            <li><span class="name">Visa application form</span><span class="pill pill--sm" data-state="locked"><svg class="icon" aria-hidden="true"><use href="../icons.svg#i-locked"/></svg>Locked</span></li>
+          </ul>
+        </section>
+        <section class="card" aria-labelledby="help-h">
+          <h2 class="card__title" id="help-h">Need a sample?</h2>
+          <div class="sample-thumb" role="img" aria-label="Sample bank statement placeholder">Sample statement</div>
+          <p class="card__body">This is what an accepted statement looks like. Your bank's layout may differ.</p>
+          <a class="btn btn--secondary" href="#">Open sample</a>
+        </section>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<nav class="bottomnav" aria-label="Main (mobile)">
+  <a href="client-dashboard.html"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-home"/></svg></span>Home</a>
+  <a href="client-upload.html" aria-current="page"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-folder"/></svg></span>Documents</a>
+  <a href="client-timeline.html"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-list"/></svg></span>Timeline</a>
+  <a href="../design-system.html#thread"><span class="bottomnav__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-chat"/></svg></span>Messages</a>
+</nav>
+
+<script>
+(function () {
+  var slot = document.getElementById('slot'), form = document.getElementById('upload-form');
+  var pill = document.getElementById('slot-pill'), sidePill = document.getElementById('side-pill');
+  var summaryHost = document.getElementById('summary-slot'), timer = null, file = null;
+
+  function show(state) {
+    slot.setAttribute('data-state', state);
+    slot.querySelectorAll('[data-show]').forEach(function (n) { n.hidden = n.getAttribute('data-show') !== state; });
+  }
+  function setPills(state, label, icon) {
+    [pill, sidePill].forEach(function (p) {
+      if (!p) return;
+      p.setAttribute('data-state', state);
+      p.innerHTML = '<svg class="icon" aria-hidden="true"><use href="../icons.svg#' + icon + '"/></svg>' + label;
+    });
+  }
+  function clearErrors() {
+    summaryHost.innerHTML = '';
+    var old = document.getElementById('slot-error'); if (old) old.remove();
+    slot.removeAttribute('aria-invalid');
+  }
+  function startUpload(f) {
+    clearErrors();
+    if (f.size > 10 * 1024 * 1024) { showError('This file is too large (' + Math.round(f.size / 1048576) + ' MB). The maximum is 10 MB. Choose a smaller file or take a new photo.'); return; }
+    file = f;
+    document.getElementById('u-name').textContent = f.name; document.getElementById('d-name').textContent = f.name;
+    show('uploading');
+    var p = 0, bar = document.getElementById('u-bar'), sub = document.getElementById('u-sub');
+    timer = setInterval(function () {
+      p += 8;
+      if (p >= 100) { clearInterval(timer); show('uploaded'); setPills('received', 'Received', 'i-received'); document.getElementById('u-replace').focus(); return; }
+      bar.setAttribute('aria-valuenow', p); bar.firstElementChild.style.inlineSize = p + '%'; sub.textContent = 'Uploading ' + p + '%';
+    }, 250);
+  }
+  function showError(msg) {
+    var e = document.createElement('div'); e.className = 'notice'; e.id = 'slot-error'; e.setAttribute('data-tone', 'error'); e.setAttribute('role', 'alert');
+    e.innerHTML = '<svg class="icon" aria-hidden="true"><use href="../icons.svg#i-fixing"/></svg><span><strong>' + msg.split('.')[0] + '.</strong>' + msg.slice(msg.indexOf('.') + 1) + '</span>';
+    slot.before(e); slot.setAttribute('aria-invalid', 'true');
+  }
+  ['file-camera', 'file-any'].forEach(function (id) {
+    document.getElementById(id).addEventListener('change', function (ev) { if (ev.target.files[0]) startUpload(ev.target.files[0]); ev.target.value = ''; });
+  });
+  document.getElementById('u-cancel').addEventListener('click', function () { clearInterval(timer); file = null; show('empty'); });
+  document.getElementById('u-replace').addEventListener('click', function () { file = null; setPills('needed', 'Needed', 'i-needed'); show('empty'); });
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    clearErrors();
+    if (!file || slot.getAttribute('data-state') !== 'uploaded') {
+      summaryHost.innerHTML = '<div class="error-summary" role="alert" tabindex="-1" id="err-sum"><h2>There is a problem</h2><ul><li><a href="#file-any">Add your bank statement before you send it</a></li></ul></div>';
+      document.getElementById('err-sum').focus();
+      return;
+    }
+    form.innerHTML = '<div class="banner" data-tone="success" role="status"><svg class="icon icon--lg" aria-hidden="true"><use href="../icons.svg#i-complete"/></svg><div><p class="banner__title">Sent for review</p><p class="banner__body">A specialist will check your bank statement. We will email you the result. You do not need to do anything else for this document.</p><div class="banner__actions"><a class="btn btn--dark" href="client-dashboard.html">Back to home<svg class="icon" aria-hidden="true"><use href="../icons.svg#i-arrow-right"/></svg></a></div></div><span></span></div>';
+    setPills('received', 'Received', 'i-received');
+  });
+})();
+</script>
+</body>
+</html>

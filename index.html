@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly | Client portal for student visa cases</title>
+<meta name="description" content="Pathly is a UX/UI case study: a client portal and staff console for an immigration institute handling student visas for Canada and France. Interactive demo with fictional data.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Pathly | Client portal for student visa cases">
+<meta property="og:description" content="Interactive UX/UI case study: client portal, staff console and design system. Fictional demo data.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Preview only: for production, self-host Host Grotesk (third-party font CDNs can be blocked in some countries). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="screens/screens.css">
+<style>
+  .home { max-inline-size: 72rem; margin-inline: auto; padding: var(--space-6) var(--space-4) var(--space-12); display: grid; gap: var(--space-8); }
+  @media (min-width: 900px) { .home { padding-inline: var(--space-8); } }
+  .home__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); }
+  .hero { display: grid; gap: var(--space-4); max-inline-size: 46rem; }
+  .hero h1 { font: 600 clamp(2.25rem, 6vw, 3.5rem)/1.1 var(--font-family-sans); letter-spacing: -0.02em; }
+  .hero p { font: 400 1.125rem/1.75rem var(--font-family-sans); color: var(--color-text-secondary); }
+  .hero__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .doors { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+  .door { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-6); background: var(--color-bg-surface); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); }
+  .door .art { inline-size: 8rem; }
+  .door h2 { font: 600 1.375rem/1.75rem var(--font-family-sans); }
+  .door p { font: 400 0.9375rem/1.5rem var(--font-family-sans); color: var(--color-text-secondary); }
+  .door__links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block-start: var(--space-1); }
+  .problem { display: grid; gap: var(--space-3); padding: var(--space-6); background: var(--color-bg-surface); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); }
+  .problem ul { margin: 0; padding-inline-start: var(--space-5); display: grid; gap: var(--space-2); font: 400 1rem/1.5rem var(--font-family-sans); color: var(--color-text-secondary); }
+  .problem h2 { font: 600 1.25rem/1.75rem var(--font-family-sans); }
+  .foot { font: 400 0.875rem/1.25rem var(--font-family-sans); color: var(--color-text-secondary); display: grid; gap: var(--space-1); max-inline-size: 60ch; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="home">
+  <header class="home__top">
+    <span class="brand"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H13a3.5 3.5 0 0 0 0-7h-2a3.5 3.5 0 0 1 0-7h4.8"/></svg></span>Pathly</span>
+    <span class="tag-chip">UX/UI case study · Interactive demo</span>
+  </header>
+
+  <main id="main" class="stack stack--lg">
+    <section class="hero" aria-labelledby="h">
+      <div class="hero__chips"><span class="tag-chip">Student visas</span><span class="tag-chip">Canada</span><span class="tag-chip">France</span></div>
+      <h1 id="h">A calmer way through a long visa journey.</h1>
+      <p>Pathly gives every student a clear view of their case, and gives the institute's team one place to work. Choose an interface below. All names, dates and documents are fictional.</p>
+    </section>
+
+    <section class="doors" aria-label="Interfaces">
+      <article class="door">
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-trip"/></svg>
+        <h2>Client portal</h2>
+        <p>Mobile-first. Where am I? What do you need from me? What happens next? Try the dashboard, a working document upload and the case timeline.</p>
+        <div class="door__links">
+          <a class="btn btn--dark" href="screens/client-dashboard.html">Open dashboard<svg class="icon" aria-hidden="true"><use href="icons.svg#i-arrow-right"/></svg></a>
+          <a class="btn btn--secondary" href="screens/client-upload.html">Upload a document</a>
+          <a class="btn btn--secondary" href="screens/client-timeline.html">Timeline</a>
+        </div>
+      </article>
+
+      <article class="door">
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-review"/></svg>
+        <h2>Staff console</h2>
+        <p>Desktop-first. Review documents, approve or reject with a reason and a new deadline, and see who needs a call. Try the review queue.</p>
+        <div class="door__links">
+          <a class="btn btn--dark" href="screens/staff-review-queue.html">Open review queue<svg class="icon" aria-hidden="true"><use href="icons.svg#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+
+      <article class="door">
+        <svg class="art" aria-hidden="true" viewBox="0 0 160 120"><use href="art.svg#a-empty"/></svg>
+        <h2>Design system</h2>
+        <p>Tokens, a nine-state status system with a separate deadline marker, and the components behind both interfaces. Built to WCAG 2.2 AA.</p>
+        <div class="door__links">
+          <a class="btn btn--dark" href="design-system.html">Open design system<svg class="icon" aria-hidden="true"><use href="icons.svg#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="problem" aria-labelledby="p-h">
+      <h2 id="p-h">The problem it solves</h2>
+      <ul>
+        <li>Case information was scattered across spreadsheets, a task board and email.</li>
+        <li>Clients could not see their status, so they phoned for updates.</li>
+        <li>Wrong or outdated documents led to long chains of reminders and calls.</li>
+      </ul>
+    </section>
+
+    <footer class="foot">
+      <p>Fictional demo data. The upload and review actions are simulated and send nothing anywhere.</p>
+      <p>The visual style was inspired by a soft dashboard reference; the layouts, status system and components are original work.</p>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

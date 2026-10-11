@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Pathly line illustrations. Colors come from the page tokens through the <use> element. -->
+  <symbol id="a-trip" viewBox="0 0 160 120">
+    <circle cx="84" cy="64" r="46" style="fill:var(--color-bg-brand-subtle)"/>
+    <rect x="50" y="28" width="62" height="80" rx="9" style="fill:var(--color-bg-surface);stroke:var(--color-text-primary);stroke-width:2.5"/>
+    <circle cx="81" cy="62" r="15" style="fill:none;stroke:var(--color-text-primary);stroke-width:2.5"/>
+    <path d="M66 62h30M81 47c-6 7-6 23 0 30M81 47c6 7 6 23 0 30" style="fill:none;stroke:var(--color-text-primary);stroke-width:2;stroke-linecap:round"/>
+    <path d="M62 91h38" style="stroke:var(--color-text-primary);stroke-width:2.5;stroke-linecap:round"/>
+    <path d="M112 38l34-15-11 34-11-9-9 9-2-12z" style="fill:var(--color-bg-accent-mint);stroke:var(--color-text-primary);stroke-width:2.5;stroke-linejoin:round"/>
+    <path d="M126 48l-10 8" style="stroke:var(--color-text-primary);stroke-width:2;stroke-linecap:round"/>
+  </symbol>
+  <symbol id="a-help" viewBox="0 0 160 120">
+    <circle cx="80" cy="62" r="46" style="fill:var(--color-bg-accent-mint)"/>
+    <path d="M38 36h58a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H70l-14 12v-12H38a8 8 0 0 1-8-8V44a8 8 0 0 1 8-8z" style="fill:var(--color-bg-surface);stroke:var(--color-text-primary);stroke-width:2.5;stroke-linejoin:round"/>
+    <path d="M46 52h42M46 62h26" style="stroke:var(--color-text-primary);stroke-width:2.5;stroke-linecap:round"/>
+    <path d="M100 66h24a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8h-6v10l-12-10h-6a8 8 0 0 1-8-8V74a8 8 0 0 1 8-8z" style="fill:var(--color-bg-brand);stroke:var(--color-text-primary);stroke-width:2.5;stroke-linejoin:round"/>
+    <path d="M104 80h.1M114 80h.1M124 80h.1" style="stroke:var(--color-text-on-brand);stroke-width:4;stroke-linecap:round"/>
+  </symbol>
+  <symbol id="a-review" viewBox="0 0 160 120">
+    <circle cx="80" cy="62" r="46" style="fill:var(--color-bg-brand-subtle)"/>
+    <rect x="44" y="30" width="54" height="68" rx="8" style="fill:var(--color-bg-surface);stroke:var(--color-text-primary);stroke-width:2.5" transform="rotate(-6 71 64)"/>
+    <rect x="58" y="26" width="54" height="68" rx="8" style="fill:var(--color-bg-surface);stroke:var(--color-text-primary);stroke-width:2.5"/>
+    <path d="M68 44h34M68 56h34M68 68h20" style="stroke:var(--color-text-primary);stroke-width:2.5;stroke-linecap:round"/>
+    <circle cx="108" cy="80" r="13" style="fill:var(--color-bg-accent-mint);stroke:var(--color-text-primary);stroke-width:2.5"/>
+    <path d="M102 80l4 4 8-8" style="fill:none;stroke:var(--color-text-primary);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  </symbol>
+  <symbol id="a-empty" viewBox="0 0 160 120">
+    <circle cx="80" cy="62" r="46" style="fill:var(--color-bg-accent-mint)"/>
+    <rect x="52" y="28" width="56" height="72" rx="9" style="fill:var(--color-bg-surface);stroke:var(--color-text-primary);stroke-width:2.5"/>
+    <path d="M64 48h32M64 60h32M64 72h18" style="stroke:var(--color-text-primary);stroke-width:2.5;stroke-linecap:round"/>
+    <circle cx="106" cy="84" r="14" style="fill:var(--color-bg-brand);stroke:var(--color-text-primary);stroke-width:2.5"/>
+    <path d="M99 84l5 5 9-10" style="fill:none;stroke:var(--color-text-on-brand);stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  </symbol>
+</svg>
